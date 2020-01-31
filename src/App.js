@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import DropZone from './components/dropzone'
+import Nomenclatures from './components/nomenclatures'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <p>Montessori-Ressources !</p>
+
+        <ul>
+          <li><a href="#list">list</a></li>
+          <li><a href="#add">add</a></li>
+          <li><a href="#info">more info</a></li>
+        </ul>
+
       </header>
+      <div className="content">
+        <h1 id="list">List</h1>
+        <Nomenclatures />
+        <h1 id="add">Add</h1>
+        <DropZone />
+        <h1 id="info">Info</h1>
+        <p>Bla</p>
+      </div>
+
     </div>
   );
 }
 
-export default App;
+export default App
