@@ -1,0 +1,15 @@
+.nomenclatures {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nomenclature {
+  border: 1px solid black;
+  padding: 10px;
+  width: 400px;
+}
+
+.nomenclature img {
+  width: 50%;
+  height: auto;
+}

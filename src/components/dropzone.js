@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import './dropzone.css';
+import {API} from '../config'
 
 var DropZone = () => {
   const [success, setSuccess] = useState(false)
@@ -11,7 +12,8 @@ var DropZone = () => {
 
   const onDrop = useCallback(acceptedFiles => {
     setMyFiles([...myFiles, ...acceptedFiles])
-  }, [])
+  }, [myFiles])
+
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
     onDrop
   })
@@ -33,20 +35,25 @@ var DropZone = () => {
 const uploadFiles = async() => {
   setUploading(true)
   setUploadProgress({})
-  const promises = [];
-  console.log("upload here :D ")
-  // myFiles.forEach(file => {
-  //   promises.push(sendRequest(file));
-  // });
-  try {
-    await Promise.all(promises);
+  const fd = new FormData()
+  myFiles.forEach((file) => {
+    fd.append('photos', file, file.originalname)
+  });
+
+  // send `POST` request
+  fetch(`${API}/nomenclatures`, {
+      method: 'POST',
+      body: fd
+  })
+  .then(() => {
     setUploading(false)
     setSuccess(true)
-  } catch (e) {
-    // Not Production ready! Do some error handling here instead...
+  })
+  .catch((err) => {
+    console.log(err)
     setUploading(false)
     setSuccess(true)
-  }
+  })
 }
 
 const renderActions = () => {

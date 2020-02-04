@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {API} from '../config'
+import Nomenclature from './nomenclature'
+import './nomenclatures.css';
+
 
 const Nomenclatures = () => {
   const [loading, isLoading] = useState(true)
@@ -20,13 +23,9 @@ const Nomenclatures = () => {
       return <div>Chargement…</div>;
   } else {
   return (
-    <div>
+    <div class="nomenclatures">
     {nomenclatures.map(nomenclature => (
-          <li key={nomenclature.name}>
-            {nomenclature.name} {nomenclature.cards.map(card => (
-              <img src={card.location}/>
-            ))}
-          </li>
+          <Nomenclature nomenclature={nomenclature} />
         ))}
     </div>
   )
