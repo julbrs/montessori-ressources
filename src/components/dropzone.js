@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
+import Resizer from 'react-image-file-resizer';
 import './dropzone.css';
 import {API} from '../config'
 
@@ -36,24 +37,44 @@ const uploadFiles = async() => {
   setUploading(true)
   setUploadProgress({})
   const fd = new FormData()
-  myFiles.forEach((file) => {
-    fd.append('photos', file, file.originalname)
-  });
 
-  // send `POST` request
-  fetch(`${API}/nomenclatures`, {
-      method: 'POST',
-      body: fd
+  // wrap the image resize in a promise
+  let promises = myFiles.map((file) => {
+    return new Promise((resolve, reject) => {
+      Resizer.imageFileResizer(
+        file,
+        1650,
+        1650,
+        'PNG',
+        100,
+        0,
+        blob => {
+          fd.append('photos', blob, file.originalname)
+          resolve()
+        },
+        'blob'
+      )
+    })
   })
-  .then(() => {
-    setUploading(false)
-    setSuccess(true)
-  })
-  .catch((err) => {
-    console.log(err)
-    setUploading(false)
-    setSuccess(true)
-  })
+
+  // wait for each promise to resolve
+  Promise.all(promises)
+    .then(() => {
+      //send `POST` request
+      fetch(`${API}/nomenclatures`, {
+          method: 'POST',
+          body: fd
+      })
+      .then(() => {
+        setUploading(false)
+        setSuccess(true)
+      })
+      .catch((err) => {
+        console.log(err)
+        setUploading(false)
+        setSuccess(true)
+      })
+    })
 }
 
 const renderActions = () => {
