@@ -10,7 +10,7 @@ function App() {
         <p>Montessori-Ressources !</p>
 
         <ul>
-          <li><a href="#list">list</a></li>
+          <li><a href="#list">list</a>y</li>
           <li><a href="#add">add</a></li>
           <li><a href="#info">more info</a></li>
         </ul>

@@ -8,6 +8,8 @@ const Nomenclature = (props) => {
       {props.nomenclature.cards.map(card => (
         <img key={card._id} alt={card.originalname}src={card.location}/>
       ))}
+      <p>by author</p>
+      <p>tags</p>
     </div>
   )
 
