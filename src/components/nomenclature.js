@@ -1,7 +1,11 @@
 import React from 'react'
 
+import TagsList from './Tags/TagsList'
+
 
 const Nomenclature = (props) => {
+  const TAGS = [{id:'t1', name:'hat', }]
+
   return (
     <div className="nomenclature">
       <p>{props.nomenclature.name}</p>
@@ -9,7 +13,7 @@ const Nomenclature = (props) => {
         <img key={card._id} alt={card.originalname}src={card.location}/>
       ))}
       <p>by author</p>
-      <p>tags</p>
+      <TagsList tags={TAGS}/>
     </div>
   )
 
