@@ -1,11 +1,7 @@
 import React from 'react'
 
 const Tag = props => {
-    return (
-        <li>
-            
-        </li>
-    )
+    return <li>{props.name}</li>
 }
 
 

@@ -4,7 +4,7 @@ import TagsList from './Tags/TagsList'
 
 
 const Nomenclature = (props) => {
-  const TAGS = [{id:'t1', name:'hat', }]
+  const TAGS = [{id:'t1', name:'pot'}] // here goes the API for tags
 
   return (
     <div className="nomenclature">
