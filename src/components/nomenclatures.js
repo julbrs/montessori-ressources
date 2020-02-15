@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {API} from '../config'
 import Nomenclature from './nomenclature'
-import './nomenclatures.css';
+//import './nomenclatures.css';
 
 
 const Nomenclatures = () => {
