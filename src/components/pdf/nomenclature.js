@@ -7,12 +7,32 @@ import { PDFViewer } from '@react-pdf/renderer'
 // Create styles
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginLeft: 10,
+    marginRight: 10,
   },
   section: {
     margin: 10,
-    padding: 10,
-    flexGrow: 1
+    padding: 0,
+    flex: 1,
+    textAlign: "center",
+  },
+  image: {
+    maxWidth: "13.5cm",
+    maxHeight: "13.5cm",
+  },
+  label: {
+    maxWidth: "13.5cm",
+    marginTop: 20,
+  },
+  footer: {
+    position: 'absolute',
+    fontSize: 12,
+    bottom: 30,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    color: 'grey',
   }
 });
 
@@ -52,24 +72,25 @@ const Nomenclature = () => {
         <Document>
           {cardGrouped.map((cards, index) => (
             <NomenclaturePage key={index} pageId={index} cards={cards} />
-
           ))}
         </Document>
       </PDFViewer>
     );
   }
-
 }
 
 const NomenclaturePage = (props) => {
   return (
-    <Page key={props.pageId} size="A4" orientation="landscape" style={styles.page}>
+    <Page wrap={false} key={props.pageId} size="A4" orientation="landscape" style={styles.page}>
       {props.cards.map((card) => (
         <View key={card._id} style={styles.section}>
-          <Image style={{width:'13cm'}} src={card.location}/>
-          <Text>{card.originalname}</Text>
+          <Image style={styles.image} src={card.location}/>
+          <Text style={styles.label}>{card.originalname}</Text>
         </View>
       ))}
+      <Text style={styles.footer} fixed>
+        Card created by author --- CC BY NC SA 4.0
+      </Text>
     </Page>
   )
 }
