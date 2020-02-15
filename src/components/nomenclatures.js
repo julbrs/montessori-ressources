@@ -23,9 +23,9 @@ const Nomenclatures = () => {
       return <div>Chargement…</div>;
   } else {
   return (
-    <div class="nomenclatures">
+    <div className="nomenclatures">
     {nomenclatures.map(nomenclature => (
-          <Nomenclature nomenclature={nomenclature} />
+          <Nomenclature key={nomenclature._id} nomenclature={nomenclature} />
         ))}
     </div>
   )
