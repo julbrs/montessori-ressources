@@ -1,17 +1,18 @@
 import React from 'react'
 
+import 'react-bulma-components/dist/react-bulma-components.min.css'
+import { Columns, Box } from 'react-bulma-components'
 import Card from './Card/Card'
-import TagsList from './Tags/TagsList'
 
 
 
-const Nomenclature = (props) => {
+
+const Nomenclature = props => {
   
-
   return (
-    <div className="nomenclature">
+    <div>
       {props.nomenclature.cards.map(card => (
-        <Card key={card._id} alt={card.originalname} src={card.location} name={props.nomenclature.name} />
+            <Card key={card._id} alt={card.originalname} src={card.location} />
       ))}
     </div>
   )
