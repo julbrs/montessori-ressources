@@ -1,7 +1,7 @@
 import React from 'react'
 
 import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Box } from 'react-bulma-components'
+import { Columns, Box } from 'react-bulma-components'
 import Card from './Card/Card'
 
 
@@ -10,6 +10,7 @@ import Card from './Card/Card'
 const Nomenclature = props => {
   
   return (
+    <Columns.Column size={6}>
     <Box>
       <article class="media">
           <div class="media-left">
@@ -93,6 +94,7 @@ const Nomenclature = props => {
           </div>
       </article>
     </Box>
+    </Columns.Column>
   )
 
 }

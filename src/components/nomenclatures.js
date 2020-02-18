@@ -25,13 +25,11 @@ const Nomenclatures = () => {
       return <div>Chargement…</div>;
   } else {
   return (
-    <div class="nomenclatures">
+    <Columns multiline={true}>
     {nomenclatures.map(nomenclature => (
-          <Columns multiline={true}>
             <Nomenclature nomenclature={nomenclature} />
-          </Columns>
         ))}
-    </div>
+    </Columns>
   )
 }
 }
