@@ -13,8 +13,8 @@
   
   .thumbnail {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 310px;
+    height: 310px;
     overflow: hidden;
     display: inline-block;
   }
