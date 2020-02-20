@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import {API} from '../config'
+
 import Nomenclature from './nomenclature'
-import './nomenclatures.css';
+import 'react-bulma-components/dist/react-bulma-components.min.css'
+import { Columns } from 'react-bulma-components'
 
 
 const Nomenclatures = () => {
@@ -23,11 +25,11 @@ const Nomenclatures = () => {
       return <div>Chargement…</div>;
   } else {
   return (
-    <div class="nomenclatures">
+    <Columns multiline={true}>
     {nomenclatures.map(nomenclature => (
-          <Nomenclature nomenclature={nomenclature} />
+            <Nomenclature nomenclature={nomenclature} />
         ))}
-    </div>
+    </Columns>
   )
 }
 }
