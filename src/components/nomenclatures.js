@@ -27,7 +27,7 @@ const Nomenclatures = () => {
   return (
     <Columns multiline={true}>
     {nomenclatures.map(nomenclature => (
-            <Nomenclature nomenclature={nomenclature} />
+            <Nomenclature key={nomenclature._id} nomenclature={nomenclature} />
         ))}
     </Columns>
   )
