@@ -1,0 +1,34 @@
+
+  
+  .thumbnails {
+    width: 310px;
+  }
+  
+  .nomenclature-image-count {
+    position: absolute;
+    margin-left: 260px;
+    z-index: 1;
+    margin-top: 260px;
+  }
+  
+  .thumbnail {
+    position: relative;
+    width: 310px;
+    height: 310px;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .thumbnail img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+  }
+  .thumbnail img.portrait {
+    width: 100%;
+    height: auto;
+  }
