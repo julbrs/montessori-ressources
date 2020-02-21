@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Columns, Box } from 'react-bulma-components'
+import { Columns, Box, Button } from 'react-bulma-components'
 import Card from './Card/Card'
 
 
@@ -18,8 +18,8 @@ const Nomenclature = props => {
               {props.nomenclature.cards.slice(0,1).map(card => (
                   <Card key={card._id} alt={card.originalname} src={card.location} />
               ))}
-              <Link to={`/nomenclature/${props.nomenclature._id}`}>Print me !</Link>
-              <a href="#" className="button">Download</a>
+              <Button renderAs={Link} to={`/nomenclature/${props.nomenclature._id}`}>Download</Button>
+
           </div>
 
           <div className="media-content">
