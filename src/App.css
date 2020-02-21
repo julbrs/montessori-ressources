@@ -1,34 +1,5 @@
-header {
-  text-align: center;
-  background-color: #e6ffee;
-  border-bottom: 3px solid black;
-  padding-bottom: 10px;
-  min-height: 8vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
-}
 
-header ul {
-  padding: 0;
-}
-
-header ul li {
-  display: inline;
-  padding: 0 3vh;
-}
-
-header ul li a {
-  text-decoration: none;
-  color: black;
-}
-
-header ul li a:hover {
-  color: red;
-  font-weight: 600;
-}
-
-.content {
+main {
+  margin-top: 5rem;
   padding: 0 10vh;
 }

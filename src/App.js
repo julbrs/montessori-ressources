@@ -1,23 +1,17 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import DropZone from './components/dropzone'
 import Nomenclatures from './components/nomenclatures'
 import Nomenclature from './components/pdf/nomenclature'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import MainHeader from './Navigation/MainHeader';
+import './App.css'
+
 
 function App() {
   return (
-    <Router className="App">
-      <header>
-        <p>Montessori-Ressources !</p>
-        <ul>
-          <li><Link to="/">home</Link></li>
-          <li><Link to="/add">add</Link></li>
-          <li><Link to="/info">info</Link></li>
-        </ul>
-
-      </header>
-      <div className="content">
+    <Router>
+      <MainHeader />
+      <main>
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>
@@ -37,7 +31,7 @@ function App() {
             <Nomenclatures />
           </Route>
         </Switch>
-      </div>
+      </main>
     </Router>
   );
 }
