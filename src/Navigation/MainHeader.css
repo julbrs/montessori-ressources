@@ -92,7 +92,7 @@
   .nav-links a:hover,
   .nav-links a:active,
   .nav-links a.active {
-    background: #f8df00;
+    background: #aabccf;
     border-color: #292929;
     color: #292929;
   }
@@ -138,7 +138,7 @@
     
     .nav-links button:hover,
     .nav-links button:active {
-      background: #f8df00;
+      background: #aabccf;
       color: #292929;
     }
   }
