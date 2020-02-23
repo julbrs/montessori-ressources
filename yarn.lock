@@ -8782,6 +8782,11 @@ react-dropzone@^10.2.1:
     file-selector "^0.1.12"
     prop-types "^15.7.2"
 
+react-editext@^3.15.0:
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/react-editext/-/react-editext-3.15.0.tgz#a90e2275fee080c885f85db2efa249b13ab5d1fe"
+  integrity sha512-mgsfPFa/8hhZBzn23soDqTAQEGTTu3CLppYhHFzhH+DFUaDqXbRzC0QLmC/sgd6EGkA0hQfTmHvnj2OMF8wBXQ==
+
 react-error-overlay@^6.0.4:
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.4.tgz#0d165d6d27488e660bc08e57bdabaad741366f7a"
