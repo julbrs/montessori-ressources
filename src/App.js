@@ -3,6 +3,7 @@ import './App.css';
 import DropZone from './components/dropzone'
 import Nomenclatures from './components/nomenclatures'
 import Nomenclature from './components/pdf/nomenclature'
+import NomenclatureView from './components/nomenclature/NomenclatureView'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/nomenclature/view/:nomenclatureId">
+            <NomenclatureView/>
+          </Route>
           <Route path="/nomenclature/:nomenclatureId">
             <Nomenclature/>
           </Route>

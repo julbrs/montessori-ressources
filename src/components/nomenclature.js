@@ -19,7 +19,7 @@ const Nomenclature = props => {
                   <Card key={card._id} alt={card.originalname} src={card.location} />
               ))}
               <Button renderAs={Link} to={`/nomenclature/${props.nomenclature._id}`}>Download</Button>
-
+              <Button renderAs={Link} to={`/nomenclature/view/${props.nomenclature._id}`}>View</Button>
           </div>
 
           <div className="media-content">
