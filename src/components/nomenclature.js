@@ -20,6 +20,7 @@ const Nomenclature = props => {
               ))}
               <Link to={`/nomenclature/${props.nomenclature._id}`}>Print me !</Link>
               <a href="#" className="button">Download</a>
+              <Link to={`/nomenclature/view/${props.nomenclature._id}`}>View me!</Link>
           </div>
 
           <div className="media-content">
