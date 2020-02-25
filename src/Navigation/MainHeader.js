@@ -7,7 +7,7 @@ import './MainHeader.css'
 
 const MainHeader = props => {
     return (
-        <Navbar>
+        <Navbar color="primary" fixed="top">
                 <Navbar.Brand>
                     <Navbar.Item>
                         <Link to="/">Montessori Ressources</Link>
