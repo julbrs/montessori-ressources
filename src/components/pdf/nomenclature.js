@@ -33,6 +33,10 @@ const styles = StyleSheet.create({
     right: 0,
     textAlign: 'center',
     color: 'grey',
+  },
+  viewer: {
+    height: "600px",
+    width: "100%",
   }
 });
 
@@ -68,7 +72,7 @@ const Nomenclature = () => {
     })
 
     return (
-      <PDFViewer width="100%" height="600px">
+      <PDFViewer style={styles.viewer}>
         <Document>
           {cardGrouped.map((cards, index) => (
             <NomenclaturePage key={index} pageId={index} cards={cards} />
