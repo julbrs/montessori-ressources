@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Link} from 'react-router-dom'
 
-import 'react-bulma-components/dist/react-bulma-components.min.css'
+//import 'react-bulma-components/dist/react-bulma-components.min.css'
 import { Navbar } from 'react-bulma-components'
 import './MainHeader.css'
 
@@ -18,7 +18,7 @@ const MainHeader = props => {
                 <Navbar.Menu >
                     <Navbar.Container>
                         <Navbar.Item>
-                            <NavLink to="/" exact>Home</NavLink>
+                            <Navbar.Link renderAs={Link} to={`/nomenclature`}>Download</Navbar.Link>
                         </Navbar.Item>
                         <Navbar.Item>
                             <NavLink to="/add">Add</NavLink>

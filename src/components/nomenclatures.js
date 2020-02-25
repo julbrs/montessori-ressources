@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {API} from '../config'
 
 import Nomenclature from './nomenclature'
-import 'react-bulma-components/dist/react-bulma-components.min.css'
+//import 'react-bulma-components/dist/react-bulma-components.min.css'
 import { Columns } from 'react-bulma-components'
 
 
