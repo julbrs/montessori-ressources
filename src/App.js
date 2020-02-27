@@ -4,7 +4,7 @@ import DropZone from './components/dropzone'
 import Nomenclatures from './components/nomenclatures'
 import Nomenclature from './components/pdf/nomenclature'
 import NomenclatureView from './components/nomenclature/NomenclatureView'
-import MainHeader from './Navigation/MainHeader';
+import MainHeader from './components/Navigation/MainHeader';
 import './App.scss'
 
 

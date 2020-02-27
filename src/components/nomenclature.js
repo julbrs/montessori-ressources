@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Columns, Box, Button } from 'react-bulma-components'
+import Button from 'react-bulma-components/lib/components/button'
+import Columns from 'react-bulma-components/lib/components/columns'
+import Box from 'react-bulma-components/lib/components/box'
 import Card from './Card/Card'
-
-
-
 
 const Nomenclature = props => {
 
@@ -65,12 +63,12 @@ const Nomenclature = props => {
               <div className="column">
                 <nav className="level is-mobile">
                   <div className="level-left">
-                    <a className="level-item" aria-label="reply">
+                    <a className="level-item" href="/" aria-label="reply">
                       <span className="icon is-small">
                         <i className="fa fa-reply" aria-hidden="true"></i>
                       </span>
                     </a>
-                    <a className="level-item" aria-label="like">
+                    <a className="level-item" href="/" aria-label="like">
                       <span className="icon is-small">
                         <i className="fa fa-heart" aria-hidden="true"></i>
                       </span>

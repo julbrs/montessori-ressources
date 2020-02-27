@@ -1,9 +1,12 @@
 import React from 'react'
 
+// TODO remove this import and switch to use react-bulma-components.
+import 'react-bulma-components/dist/react-bulma-components.min.css'
+
 import "./Card.css";
 
 const Card = props => {
-    
+
 
   return (
           <div className="thumbnails">
@@ -17,9 +20,9 @@ const Card = props => {
               </div>
 
           </div>
-            
-            
-    
+
+
+
 
   );
 }

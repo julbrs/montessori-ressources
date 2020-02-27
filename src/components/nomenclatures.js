@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {API} from '../config'
 
 import Nomenclature from './nomenclature'
-//import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Columns } from 'react-bulma-components'
-
+import Columns from 'react-bulma-components/lib/components/columns'
 
 const Nomenclatures = () => {
   const [loading, isLoading] = useState(true)

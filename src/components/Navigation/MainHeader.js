@@ -1,8 +1,6 @@
 import React from 'react'
 import { NavLink, Link} from 'react-router-dom'
-
-//import 'react-bulma-components/dist/react-bulma-components.min.css'
-import { Navbar } from 'react-bulma-components'
+import Navbar from 'react-bulma-components/lib/components/navbar'
 import './MainHeader.css'
 
 const MainHeader = props => {
@@ -35,28 +33,7 @@ const MainHeader = props => {
                     </Navbar.Container>
                 </Navbar.Menu>
       </Navbar>
-
-      
     )
 }
 
-
 export default MainHeader
-
-{/*  <header className="main-header">
-            <button className="main-navigation__menu-btn">
-                <span />
-                <span />
-                <span />
-            </button>
-            <h1 className="main-navigation__title">
-                <Link to="/">Montessori Ressources</Link> 
-            </h1>
-            <nav>
-            <ul className="nav-links">
-                <li><NavLink to="/" exact>Home</NavLink></li>
-                <li><NavLink to="/add">Add</NavLink></li>
-                <li><NavLink to="/info">Info</NavLink></li>
-            </ul>
-            </nav>    
-    </header> */}
