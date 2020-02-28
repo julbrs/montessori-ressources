@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Link} from 'react-router-dom'
 import Navbar from 'react-bulma-components/lib/components/navbar'
-import './MainHeader.css'
+
 
 const MainHeader = props => {
     return (
