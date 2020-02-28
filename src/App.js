@@ -17,6 +17,7 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>
+          <main>
           <Route path="/nomenclature/view/:nomenclatureId">
             <NomenclatureView/>
           </Route>
@@ -35,6 +36,7 @@ function App() {
             <h1 id="list">List</h1>
             <Nomenclatures />
           </Route>
+          </main>
         </Switch>
         <MainFooter />
     </Router>

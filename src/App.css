@@ -1,7 +1,10 @@
 
 body {
     background-color: #aabccf;
-    padding: 0 10vh;
     
+
 }
-    
+
+main {
+    padding: 5vh 10vh;
+}
