@@ -1,5 +1,7 @@
 import React from 'react'
-import { Columns, Box, Image } from 'react-bulma-components'
+import Columns from 'react-bulma-components/lib/components/columns'
+import Box from 'react-bulma-components/lib/components/box'
+import Image from 'react-bulma-components/lib/components/image'
 import EdiText from 'react-editext'
 
 const CardView = (props)  => {
