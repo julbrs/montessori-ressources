@@ -6,6 +6,7 @@ import Nomenclature from './components/pdf/nomenclature'
 import NomenclatureView from './components/nomenclature/NomenclatureView'
 import MainHeader from './components/Navigation/MainHeader';
 import './App.scss'
+import './App.css'
 
 
 function App() {
