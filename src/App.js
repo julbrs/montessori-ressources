@@ -13,7 +13,6 @@ function App() {
   return (
     <Router>
       <MainHeader />
-      <main>
         {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
         <Switch>
@@ -36,7 +35,6 @@ function App() {
             <Nomenclatures />
           </Route>
         </Switch>
-      </main>
     </Router>
   );
 }
