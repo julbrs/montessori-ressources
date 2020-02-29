@@ -1,34 +1,10 @@
-header {
-  text-align: center;
-  background-color: #e6ffee;
-  border-bottom: 3px solid black;
-  padding-bottom: 10px;
-  min-height: 8vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: calc(10px + 2vmin);
+
+body {
+    background-color: #aabccf;
+    
+
 }
 
-header ul {
-  padding: 0;
-}
-
-header ul li {
-  display: inline;
-  padding: 0 3vh;
-}
-
-header ul li a {
-  text-decoration: none;
-  color: black;
-}
-
-header ul li a:hover {
-  color: red;
-  font-weight: 600;
-}
-
-.content {
-  padding: 0 10vh;
+main {
+    padding: 5vh 10vh;
 }
