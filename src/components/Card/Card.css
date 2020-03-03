@@ -1,34 +1,59 @@
+.thumbnails {
+  position: relative;
+  width: 310px;
+}
 
-  
-  .thumbnails {
-    width: 310px;
-  }
-  
-  .nomenclature-image-count {
-    position: absolute;
-    margin-left: 260px;
-    z-index: 1;
-    margin-top: 260px;
-  }
-  
-  .thumbnail {
-    position: relative;
-    width: 310px;
-    height: 310px;
-    overflow: hidden;
-    display: inline-block;
-  }
-  .thumbnail img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: 100%;
-    width: auto;
-    -webkit-transform: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%);
-  }
-  .thumbnail img.portrait {
-    width: 100%;
-    height: auto;
-  }
+.nomenclature-image-count {
+  position: absolute;
+  margin-left: 260px;
+  z-index: 1;
+  margin-top: 260px;
+}
+
+.thumbnail {
+  position: relative;
+  width: 310px;
+  height: 310px;
+  overflow: hidden;
+  display: block;
+  margin-bottom: 16px;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+
+.thumbnails:hover .image-previews-container {
+  opacity: 1;
+}
+
+.image-previews-container {
+  display: grid;
+  position: absolute;
+  z-index: 10;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  background-color: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  transition: opacity 0.4s ease-in;
+}
+
+.image-preview {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+}
