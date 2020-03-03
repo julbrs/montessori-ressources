@@ -14,7 +14,7 @@ const Nomenclature = props => {
       <article className="media">
           <div className="media-left">
               {props.nomenclature.cards.slice(0,1).map(card => (
-                  <Card key={card._id} alt={card.originalname} src={card.location} />
+                  <Card key={card._id} alt={card.originalname} src={card.location} imageCount={props.nomenclature.cards.length} />
               ))}
               <Button renderAs={Link} to={`/nomenclature/${props.nomenclature._id}`}>Download</Button>
               <Button renderAs={Link} to={`/nomenclature/view/${props.nomenclature._id}`}>View</Button>

@@ -12,7 +12,7 @@ const Card = props => {
           <div className="thumbnails">
 
               <Tag rounded size="large" className="nomenclature-image-count">
-                6
+                {props.imageCount}
               </Tag>
 
               <div className="thumbnail">
