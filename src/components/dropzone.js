@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Resizer from 'react-image-file-resizer';
 import './dropzone.css';
-import {API} from '../config'
+import {API} from '../tools/config'
 
 var DropZone = () => {
   const [success, setSuccess] = useState(false)

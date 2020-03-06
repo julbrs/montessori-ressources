@@ -1,42 +1,46 @@
-import React, {useState} from 'react'
+import React from 'react'
 import FacebookLogin from 'react-facebook-login'
+import client from '../../tools/client';
 
-import {FACEBOOK_CLIENT_ID} from '../../config'
-import {API} from '../../config'
+import Navbar from 'react-bulma-components/lib/components/navbar'
 
-const Login = () => {
-  let localUser = localStorage.getItem('user')
-  if(localUser) {
-    localUser = JSON.parse(localUser)
-  }
-  const [user, setUser] = useState(localUser)
+import {FACEBOOK_CLIENT_ID} from '../../tools/config'
 
-  const responseFacebook = async (response) => {
-    let data = await fetch(`${API}/auth/facebook`, {
-      method: 'POST',
-      headers: {
-        access_token: `${response.accessToken}`
-      }
+const Login = (props) => {
+
+  // when you auth via facebook grab the token
+  const handleFacebook = async (response) => {
+    let res = await client.post(`auth/facebook`, {
+      access_token: `${response.accessToken}`
     })
-
-    let json = await data.json()
-    setUser(json)
-    localStorage.setItem('user', JSON.stringify(json));
-
+    props.setUser(res.data)
+    localStorage.setItem('token', res.headers['x-auth-token'])
   }
 
-  if(user) {
+  // when you logout clean the token
+  const logout = () => {
+    localStorage.removeItem('token')
+    props.setUser(null)
+  }
+
+  if(props.user) {
     return (
-      <div>{user.name}</div>
+      <Navbar.Container position="end">
+        <Navbar.Item onClick={logout}>
+          Logout ({props.user.name})
+        </Navbar.Item>
+      </Navbar.Container>
     )
   }
   else {
     return (
-      <FacebookLogin
-        appId={FACEBOOK_CLIENT_ID}
-        autoLoad={false}
-        fields="name,email,picture"
-        callback={responseFacebook} />
+      <Navbar.Container position="end">
+        <FacebookLogin
+          appId={FACEBOOK_CLIENT_ID}
+          autoLoad={false}
+          fields="name,email,picture"
+          callback={handleFacebook} />
+      </Navbar.Container>
     )
   }
 }

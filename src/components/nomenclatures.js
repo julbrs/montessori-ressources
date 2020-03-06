@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {API} from '../config'
+import {API} from '../tools/config'
 
 import Nomenclature from './nomenclature'
 import Columns from 'react-bulma-components/lib/components/columns'

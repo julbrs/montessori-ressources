@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import ProtectedRoute from './components/Navigation/ProtectedRoute'
 import DropZone from './components/dropzone'
 import Nomenclatures from './components/nomenclatures'
 import Nomenclature from './components/pdf/nomenclature'
@@ -18,16 +19,9 @@ function App() {
         renders the first one that matches the current URL. */}
         <main>
         <Switch>
-          <Route path="/nomenclature/view/:nomenclatureId">
-            <NomenclatureView/>
-          </Route>
-          <Route path="/nomenclature/:nomenclatureId">
-            <Nomenclature/>
-          </Route>
-          <Route path="/add">
-            <h1 id="add">Add</h1>
-            <DropZone />
-          </Route>
+          <Route path="/nomenclature/view/:nomenclatureId" component={NomenclatureView} />
+          <Route path="/nomenclature/:nomenclatureId" component={Nomenclature} />
+          <ProtectedRoute path="/add" component={DropZone} / >
           <Route path="/info">
             <h1 id="info">Info</h1>
             <p>Bla</p>
