@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build && cd build && surge --project . --domain https://montessori-ressources.surge.sh"
+    "deploy": "react-scripts build && cd build && surge --project . --domain https://montessori-ressources.net"
   },
   "eslintConfig": {
     "extends": "react-app"
