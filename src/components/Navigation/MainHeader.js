@@ -3,6 +3,7 @@ import { NavLink, Link} from 'react-router-dom'
 import Navbar from 'react-bulma-components/lib/components/navbar'
 
 
+
 const MainHeader = props => {
     return (
         <Navbar color="primary" fixed="top" active={false} transparent={false}>
