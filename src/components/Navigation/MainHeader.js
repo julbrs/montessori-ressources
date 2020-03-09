@@ -8,7 +8,7 @@ const MainHeader = props => {
         <Navbar color="primary" fixed="top" active={false} transparent={false}>
                 <Navbar.Brand>
                     <Navbar.Item>
-                        <Navbar.Link renderAs={Link} to={`/`} arrowless>Montessori Ressources</Navbar.Link>
+                        <Navbar.Link renderAs={Link} to={`/`} arrowless><span role="img" aria-label="book">📖</span> Montessori Ressources</Navbar.Link>
                     </Navbar.Item>
                     <Navbar.Burger />
                 </Navbar.Brand>
