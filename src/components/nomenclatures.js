@@ -3,6 +3,7 @@ import {API} from '../tools/config'
 
 import Nomenclature from './nomenclature'
 import Columns from 'react-bulma-components/lib/components/columns'
+import Section from 'react-bulma-components/lib/components/section'
 
 const Nomenclatures = () => {
   const [loading, isLoading] = useState(true)
@@ -20,14 +21,20 @@ const Nomenclatures = () => {
   }, [])
 
   if (loading) {
-      return <div>Chargement…</div>;
+      return (
+        <Section>
+          Loading
+        </Section>
+      )
   } else {
   return (
-    <Columns multiline={true}>
-    {nomenclatures.map(nomenclature => (
-            <Nomenclature key={nomenclature._id} nomenclature={nomenclature} />
-        ))}
-    </Columns>
+    <Section>
+      <Columns multiline={true} breakpoint="desktop">
+      {nomenclatures.map(nomenclature => (
+              <Nomenclature key={nomenclature._id} nomenclature={nomenclature} />
+          ))}
+      </Columns>
+    </Section>
   )
 }
 }

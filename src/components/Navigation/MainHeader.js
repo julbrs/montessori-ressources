@@ -23,8 +23,8 @@ const MainHeader = (props) => {
   return (
       <Navbar color="primary" fixed="top" active={false} transparent={false}>
         <Navbar.Brand>
-          <Navbar.Item renderAs={Link} to={`/`}>
-            Montessori Ressources
+          <Navbar.Item>
+              <Navbar.Link renderAs={Link} to={`/`} arrowless><span role="img" aria-label="book">📖</span> Montessori Ressources</Navbar.Link>
           </Navbar.Item>
           <Navbar.Burger />
         </Navbar.Brand>

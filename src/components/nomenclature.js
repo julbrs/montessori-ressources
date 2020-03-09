@@ -8,7 +8,7 @@ import Card from './Card/Card';
 
 const Nomenclature = props => {
   return (
-    <Columns.Column size={6}>
+    <Columns.Column desktop={12} >
       <Box>
         <article className="media">
           <div className="media-left">
