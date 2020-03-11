@@ -35,7 +35,7 @@ const MainHeader = props => {
                         <Navbar.Item>
                             <Navbar.Link renderAs={NavLink} to={`/`} arrowless>
                             <GoogleLogin
-                            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                            clientId="450944417353-pe3vqggjq8ouakahnr8futu7eju6jvm7.apps.googleusercontent.com"
                             buttonText="Login"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
