@@ -25,13 +25,13 @@ const Nomenclature = props => {
               renderAs={Link}
               to={`/nomenclature/${props.nomenclature._id}`}
             >
-              Download
+              Télécharger
             </Button>
             <Button
               renderAs={Link}
               to={`/nomenclature/view/${props.nomenclature._id}`}
             >
-              View
+              Voir
             </Button>
           </div>
 
