@@ -1,9 +1,14 @@
 import React from 'react'
 import { NavLink, Link} from 'react-router-dom'
 import Navbar from 'react-bulma-components/lib/components/navbar'
+import GoogleLogin from 'react-google-login'
 
 
 const MainHeader = props => {
+    const responseGoogle = (response) => {
+        console.log(response)
+      }
+
     return (
         <Navbar color="primary" fixed="top" active={false} transparent={false}>
                 <Navbar.Brand>
@@ -28,7 +33,14 @@ const MainHeader = props => {
 
                     <Navbar.Container position="end">
                         <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/`} arrowless>Log in</Navbar.Link>
+                            <Navbar.Link renderAs={NavLink} to={`/`} arrowless>
+                            <GoogleLogin
+                            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                            buttonText="Login"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'} />
+                            </Navbar.Link>
                         </Navbar.Item>
                     </Navbar.Container>
                 </Navbar.Menu>
