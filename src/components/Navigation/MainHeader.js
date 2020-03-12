@@ -23,8 +23,8 @@ const MainHeader = (props) => {
   return (
       <Navbar color="primary" fixed="top" active={false} transparent={false}>
         <Navbar.Brand>
-          <Navbar.Item>
-              <Navbar.Link renderAs={Link} to={`/`} arrowless><span role="img" aria-label="book">📖</span> Montessori Ressources</Navbar.Link>
+          <Navbar.Item renderAs={Link} to={`/`} arrowless>
+            <span role="img" aria-label="book">📖</span> Montessori Ressources
           </Navbar.Item>
           <Navbar.Burger />
         </Navbar.Brand>
@@ -32,13 +32,13 @@ const MainHeader = (props) => {
         <Navbar.Menu>
           <Navbar.Container>
             <Navbar.Item renderAs={Link} to={`/`}>
-              Home
+              Nomenclatures
             </Navbar.Item>
             <Navbar.Item renderAs={Link} to={`/add`}>
-              Add
+              Créer
             </Navbar.Item>
             <Navbar.Item renderAs={Link} to={`/info`}>
-              Info
+              À propos
             </Navbar.Item>
           </Navbar.Container>
 

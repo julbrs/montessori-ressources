@@ -15,6 +15,7 @@
     "react-dropzone": "^10.2.1",
     "react-editext": "^3.15.0",
     "react-facebook-login": "^4.1.1",
+    "react-icons": "^3.9.0",
     "react-image-file-resizer": "^0.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0"

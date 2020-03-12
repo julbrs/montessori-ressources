@@ -30,21 +30,21 @@ function App() {
           <ProtectedRoute path="/add" component={DropZone} / >
           <Route path="/info" component={Info} />
           <Route path="/">
-          <Hero color="primary" gradient >
-            <Hero.Body>
-              <Container>
-                <Heading>
-                  <span role="img" aria-label="book">📖</span> Bienvenue sur la plateforme de ressources Montessori !
-                </Heading>
-                <Heading subtitle size={5}>
-                Les nomenclatures sont des outils essentiels pour accompagner les enfants dans leur
-                développement. L’enfant s’épanouit et avec ses yeux vifs découvre les mystères de la vie. Grâce
-                à ce support, nous enrichissons le vocabulaire de l’enfant. Plus celui-ci grandit plus ce support se
-                rélève un allié dans l’apprentissage de la lecture et dans le développement de la logique.
-                </Heading>
-              </Container>
-            </Hero.Body>
-          </Hero>
+            <Hero color="primary" gradient >
+              <Hero.Body>
+                <Container>
+                  <Heading>
+                    <span role="img" aria-label="book">📖</span> Bienvenue sur la plateforme de ressources Montessori !
+                  </Heading>
+                  <Heading subtitle size={5}>
+                  Les nomenclatures sont des outils essentiels pour accompagner les enfants dans leur
+                  développement. L’enfant s’épanouit et avec ses yeux vifs découvre les mystères de la vie. Grâce
+                  à ce support, nous enrichissons le vocabulaire de l’enfant. Plus celui-ci grandit plus ce support se
+                  rélève un allié dans l’apprentissage de la lecture et dans le développement de la logique.
+                  </Heading>
+                </Container>
+              </Hero.Body>
+            </Hero>
             <Nomenclatures />
           </Route>
         </Switch>

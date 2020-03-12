@@ -1,8 +1,10 @@
 import React from 'react'
-import FacebookLogin from 'react-facebook-login'
+//import FacebookLogin from 'react-facebook-login'
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import client from '../../tools/client';
 
 import Navbar from 'react-bulma-components/lib/components/navbar'
+import { AiFillFacebook, AiFillGoogleCircle} from 'react-icons/ai';
 
 import {FACEBOOK_CLIENT_ID} from '../../tools/config'
 
@@ -39,7 +41,17 @@ const Login = (props) => {
           appId={FACEBOOK_CLIENT_ID}
           autoLoad={false}
           fields="name,email,picture"
+          render={renderProps => (
+            <Navbar.Item onClick={renderProps.onClick}>
+              <AiFillFacebook size="2em"/>
+            </Navbar.Item>
+          )}
           callback={handleFacebook} />
+
+          <Navbar.Item>
+            <AiFillGoogleCircle size="2em" title="Pas encore disponible..."/>
+          </Navbar.Item>
+
       </Navbar.Container>
     )
   }

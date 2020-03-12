@@ -107,11 +107,10 @@ if (success) {
         <input {...getInputProps()} />
         {
           isDragActive ?
-            <p>Drop the files here ...</p> : (
-              <div>
-            <p>Drag 'n' drop some files here, or click to select files</p>
-            <p>Select all the pictures for your nomenclature</p>
-
+            <p>Déposer les fichiers ici...</p> : (
+            <div>
+              <p>Déposer les fichiers ici, ou cliquez pour sélectionner les fichiers</p>
+              <p>Vous pouvez déposez tous les fichiers images de votre nomenclature.</p>
             </div>
           )
         }
