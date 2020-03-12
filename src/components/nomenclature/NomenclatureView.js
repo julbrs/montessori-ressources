@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import {API} from '../../config'
+import {API} from '../../tools/config'
 import { Columns } from 'react-bulma-components'
 import EdiText from 'react-editext'
 import CardView from './CardView'
@@ -12,7 +12,6 @@ const NomenclatureView = ()  => {
 
   // handle the card change
   const onChangeCard = (card) => {
-    console.log(card)
     let cards = nomenclature.cards.map(e => {
       if(e._id === card.id) {
         return card
@@ -27,7 +26,6 @@ const NomenclatureView = ()  => {
   // save state to backend
   const handleSave = (data) => {
     setNomenclature({...nomenclature, ...data })
-    console.log(nomenclature)
     // save the state
     fetch(`${API}/nomenclatures/${nomenclatureId}`, {
         method: 'PUT',

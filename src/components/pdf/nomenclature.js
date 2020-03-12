@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {API} from '../../config'
+import {API} from '../../tools/config'
 import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer'
 import { useParams } from 'react-router-dom'
 import { PDFViewer } from '@react-pdf/renderer'
@@ -93,7 +93,7 @@ const NomenclaturePage = (props) => {
         </View>
       ))}
       <Text style={styles.footer} fixed>
-        Card créé par l'auteur --- CC BY NC SA 4.0
+        Carte créé par l'auteur --- CC BY NC SA 4.0
       </Text>
     </Page>
   )

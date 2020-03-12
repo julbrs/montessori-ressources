@@ -39,7 +39,7 @@ const Nomenclature = props => {
             <h2 className="title is-3">
               {props.nomenclature.name ? props.nomenclature.name : 'bla'}
             </h2>
-            <small>By user</small>
+            <small>Par user</small>
             <div className="tags">
               <span className="tag">Gospel</span>
               <span className="tag">Chant</span>
@@ -51,28 +51,28 @@ const Nomenclature = props => {
                   <div className="control">
                     <div className="tags has-addons">
                       <span className="tag is-dark">Images</span>
-                      <span className="tag is-success">Yes</span>
+                      <span className="tag is-success">Oui</span>
                     </div>
                   </div>
 
                   <div className="control">
                     <div className="tags has-addons">
                       <span className="tag is-dark">Label</span>
-                      <span className="tag is-success">Yes</span>
+                      <span className="tag is-success">Oui</span>
                     </div>
                   </div>
 
                   <div className="control">
                     <div className="tags has-addons">
                       <span className="tag is-dark">Description</span>
-                      <span className="tag is-success">Yes</span>
+                      <span className="tag is-success">Oui</span>
                     </div>
                   </div>
 
                   <div className="control">
                     <div className="tags has-addons">
-                      <span className="tag is-dark">Text with gaps</span>
-                      <span className="tag is-danger">No</span>
+                      <span className="tag is-dark">Texte à trous</span>
+                      <span className="tag is-danger">Non</span>
                     </div>
                   </div>
                 </div>
@@ -97,13 +97,13 @@ const Nomenclature = props => {
             <nav className="level">
               <div className="level-item has-text-centered">
                 <div>
-                  <p className="heading">Downloads</p>
+                  <p className="heading">Téléchargements</p>
                   <p className="title is-5">3,456</p>
                 </div>
               </div>
               <div className="level-item has-text-centered">
                 <div>
-                  <p className="heading">Like</p>
+                  <p className="heading">J'aime</p>
                   <p className="title is-5">123</p>
                 </div>
               </div>
