@@ -93,7 +93,7 @@ const NomenclaturePage = (props) => {
         </View>
       ))}
       <Text style={styles.footer} fixed>
-        Card created by author --- CC BY NC SA 4.0
+        Card créé par l'auteur --- CC BY NC SA 4.0
       </Text>
     </Page>
   )

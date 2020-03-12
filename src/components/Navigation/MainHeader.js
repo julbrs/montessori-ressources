@@ -3,6 +3,7 @@ import { NavLink, Link} from 'react-router-dom'
 import Navbar from 'react-bulma-components/lib/components/navbar'
 
 
+
 const MainHeader = props => {
     return (
         <Navbar color="primary" fixed="top" active={false} transparent={false}>
@@ -16,19 +17,19 @@ const MainHeader = props => {
                 <Navbar.Menu >
                     <Navbar.Container>
                         <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/nomenclature`} arrowless>Home</Navbar.Link>
+                            <Navbar.Link renderAs={NavLink} to={`/nomenclature`} arrowless>Nomenclature</Navbar.Link>
                         </Navbar.Item>
                         <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/add`} arrowless>Add</Navbar.Link>
+                            <Navbar.Link renderAs={NavLink} to={`/add`} arrowless>Créer</Navbar.Link>
                         </Navbar.Item>
                         <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/info`} arrowless>Info</Navbar.Link>
+                            <Navbar.Link renderAs={NavLink} to={`/info`} arrowless>A Propos</Navbar.Link>
                         </Navbar.Item>
                     </Navbar.Container>
 
                     <Navbar.Container position="end">
                         <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/`} arrowless>Log in</Navbar.Link>
+                            <Navbar.Link renderAs={NavLink} to={`/`} arrowless>Connexion</Navbar.Link>
                         </Navbar.Item>
                     </Navbar.Container>
                 </Navbar.Menu>

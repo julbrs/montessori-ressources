@@ -14,8 +14,7 @@ const MainFooter = () => {
                     <Container fluid>
                         <Content style={{ textAlign: 'center' }}>
                             <p>
-                            <strong>Montessori Ressources</strong> by <a href="https://www.montessori.quebec/">Montessori au Québec</a>. The source code is available on <a href="https://github.com/montessori-ressources">Github</a>. The website content
-                            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                            <strong>Montessori Ressources</strong> par <a href="https://www.montessori.quebec/">Montessori au Québec</a>. Le code source est disponible sur <a href="https://github.com/montessori-ressources">Github</a>. Le contenu du site est sous license <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
                             </p>
                         </Content>
                     </Container>

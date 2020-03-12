@@ -31,7 +31,7 @@ function App() {
             <Nomenclature/>
           </Route>
           <Route path="/add">
-            <h1 id="add">Add</h1>
+            <h1 id="add">Créer</h1>
             <DropZone />
           </Route>
           <Route path="/info" component={Info} />
