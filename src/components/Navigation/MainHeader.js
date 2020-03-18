@@ -1,51 +1,51 @@
-import React from 'react'
-import { NavLink, Link} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { Link} from 'react-router-dom'
 import Navbar from 'react-bulma-components/lib/components/navbar'
-import GoogleLogin from 'react-google-login'
+import Login from './Login'
+import client from '../../tools/client';
 
+const MainHeader = (props) => {
 
-const MainHeader = props => {
-    const responseGoogle = (response) => {
-        console.log(response)
-      }
+  const [user, setUser] = useState()
 
-    return (
-        <Navbar color="primary" fixed="top" active={false} transparent={false}>
-                <Navbar.Brand>
-                    <Navbar.Item>
-                        <Navbar.Link renderAs={Link} to={`/`} arrowless><span role="img" aria-label="book">📖</span> Montessori Ressources</Navbar.Link>
-                    </Navbar.Item>
-                    <Navbar.Burger />
-                </Navbar.Brand>
+  // this effect will grab user info at component mount
+  useEffect(() => {
+    client.get('auth')
+      .then((data) => {
+        setUser(data.data)
+      })
+      .catch((err) => {
+        // if auth error let's remove the token
+        localStorage.removeItem('token')
+      })
+  }, [])
 
-                <Navbar.Menu >
-                    <Navbar.Container>
-                        <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/nomenclature`} arrowless>Home</Navbar.Link>
-                        </Navbar.Item>
-                        <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/add`} arrowless>Add</Navbar.Link>
-                        </Navbar.Item>
-                        <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/info`} arrowless>Info</Navbar.Link>
-                        </Navbar.Item>
-                    </Navbar.Container>
+  return (
+      <Navbar color="primary" fixed="top" active={false} transparent={false}>
+        <Navbar.Brand>
+          <Navbar.Item renderAs={Link} to={`/`} arrowless>
+            <span role="img" aria-label="book">📖</span> Montessori Ressources
+          </Navbar.Item>
+          <Navbar.Burger />
+        </Navbar.Brand>
 
-                    <Navbar.Container position="end">
-                        <Navbar.Item>
-                            <Navbar.Link renderAs={NavLink} to={`/`} arrowless>
-                            <GoogleLogin
-                            clientId="450944417353-pe3vqggjq8ouakahnr8futu7eju6jvm7.apps.googleusercontent.com"
-                            buttonText="Login"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            cookiePolicy={'single_host_origin'} />
-                            </Navbar.Link>
-                        </Navbar.Item>
-                    </Navbar.Container>
-                </Navbar.Menu>
+        <Navbar.Menu>
+          <Navbar.Container>
+            <Navbar.Item renderAs={Link} to={`/`}>
+              Nomenclatures
+            </Navbar.Item>
+            <Navbar.Item renderAs={Link} to={`/add`}>
+              Créer
+            </Navbar.Item>
+            <Navbar.Item renderAs={Link} to={`/info`}>
+              À propos
+            </Navbar.Item>
+          </Navbar.Container>
+
+          <Login user={user} setUser={setUser}/>
+        </Navbar.Menu>
       </Navbar>
-    )
+  )
 }
 
 export default MainHeader

@@ -16,7 +16,7 @@ const Info = () => {
         <Hero.Body>
           <Container>
             <Heading>
-              <span role="img" aria-label="book">📗</span> Montessori Ressources, une plateforme ouverte et collaborative de matériels Montessori...
+              <span role="img" aria-label="book">📗</span> Montessori Ressources, une plateforme ouverte et collaborative de matériel Montessori...
             </Heading>
             <Heading subtitle size={3}>
 
