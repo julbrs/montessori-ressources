@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {API} from '../tools/config'
+import client from '../tools/client'
 
 import Nomenclature from './nomenclature'
 import Columns from 'react-bulma-components/lib/components/columns'
@@ -10,11 +10,10 @@ const Nomenclatures = () => {
   const [nomenclatures, setNomenclatures] = useState([])
 
   useEffect(() => {
-    fetch(`${API}/nomenclatures`)
-      .then(res => res.json())
+    client.get('/nomenclatures')
       .then(
         (result) => {
-          setNomenclatures(result)
+          setNomenclatures(result.data)
           isLoading(false)
         }
       )

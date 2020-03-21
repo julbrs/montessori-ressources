@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import {API} from '../../tools/config'
 import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer'
 import { useParams } from 'react-router-dom'
 import { PDFViewer } from '@react-pdf/renderer'
+import client from '../../tools/client'
 
 // Create styles
 const styles = StyleSheet.create({
@@ -47,11 +47,10 @@ const Nomenclature = () => {
   const [nomenclature, setNomenclature] = useState([])
 
   useEffect(() => {
-    fetch(`${API}/nomenclatures/${nomenclatureId}`)
-      .then(res => res.json())
+    client.get(`/nomenclatures/${nomenclatureId}`)
       .then(
         (result) => {
-          setNomenclature(result)
+          setNomenclature(result.data)
           isLoading(false)
         }
       )
