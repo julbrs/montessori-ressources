@@ -6,9 +6,19 @@ import client from '../../tools/client';
 import Navbar from 'react-bulma-components/lib/components/navbar'
 import { AiFillFacebook, AiFillGoogleCircle} from 'react-icons/ai';
 
-import {FACEBOOK_CLIENT_ID} from '../../tools/config'
+import {FACEBOOK_CLIENT_ID, GOOGLE_CLIENT_ID} from '../../tools/config'
+import GoogleLogin from 'react-google-login'
 
 const Login = (props) => {
+
+  // when you auth via google grab the token
+  const handleGoogle = async (response) => {
+    let res = await client.post(`auth/google`, {
+      access_token: `${response.accessToken}`
+    })
+    props.setUser(res.data)
+    localStorage.setItem('token', res.headers['x-auth-token'])
+  }
 
   // when you auth via facebook grab the token
   const handleFacebook = async (response) => {
@@ -48,9 +58,16 @@ const Login = (props) => {
           )}
           callback={handleFacebook} />
 
-          <Navbar.Item>
-            <AiFillGoogleCircle size="2em" title="Pas encore disponible..."/>
-          </Navbar.Item>
+          <GoogleLogin
+            clientId={GOOGLE_CLIENT_ID}
+            buttonText="Login"
+            onSuccess={handleGoogle}
+            render={renderProps => (
+              <Navbar.Item onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                <AiFillGoogleCircle size="2em"/>
+              </Navbar.Item>
+            )}
+            cookiePolicy={'single_host_origin'} />
 
       </Navbar.Container>
     )
