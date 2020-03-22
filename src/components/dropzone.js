@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import Resizer from 'react-image-file-resizer';
 import './dropzone.css';
-import {API} from '../tools/config'
+import client from '../tools/client';
 
 var DropZone = () => {
   const [success, setSuccess] = useState(false)
@@ -61,10 +61,8 @@ const uploadFiles = async() => {
   Promise.all(promises)
     .then(() => {
       //send `POST` request
-      fetch(`${API}/nomenclatures`, {
-          method: 'POST',
-          body: fd
-      })
+      client.post('/nomenclatures',
+      fd)
       .then(() => {
         setUploading(false)
         setSuccess(true)

@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import {API} from '../../tools/config'
 import { Columns } from 'react-bulma-components'
 import EdiText from 'react-editext'
 import CardView from './CardView'
+import client from '../../tools/client'
 
 const NomenclatureView = ()  => {
   let { nomenclatureId } = useParams();
@@ -27,12 +27,10 @@ const NomenclatureView = ()  => {
   const handleSave = (data) => {
     setNomenclature({...nomenclature, ...data })
     // save the state
-    fetch(`${API}/nomenclatures/${nomenclatureId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+    //
+    client.put(`/nomenclatures/${nomenclatureId}`,
+    {
+      data
     })
     .then(() => {
       console.log("success")
@@ -44,11 +42,10 @@ const NomenclatureView = ()  => {
 
   // load the nomenclature from the backend
   useEffect(() => {
-    fetch(`${API}/nomenclatures/${nomenclatureId}`)
-      .then(res => res.json())
+    client.get(`/nomenclatures/${nomenclatureId}`)
       .then(
         (result) => {
-          setNomenclature(result)
+          setNomenclature(result.data)
           isLoading(false)
         }
       )
