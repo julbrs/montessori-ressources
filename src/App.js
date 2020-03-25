@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProtectedRoute from './components/Navigation/ProtectedRoute'
 import DropZone from './components/dropzone'
@@ -18,12 +18,24 @@ import './App.scss'
 import './App.css'
 
 
-function App() {
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn ] = useState(false)
+
+  const login = useCallback(() => {
+    setIsLoggedIn(true)
+  }, [])
+
+  const logout = useCallback(() => {
+    setIsLoggedIn(false)
+  }, [])
+
+
+
   return (
     /* Every component in our router has acess to AuthContext. 
     The provider takes a value prop that we bind with the initial value.
     Every time this value changes, all components that listen to our context will re-render */
-    <AuthContext.Provider value={{}}>
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, login: login, logout:logout}}>
     <Router>
       <MainHeader />
         {/* A <Switch> looks through its children <Route>s and
