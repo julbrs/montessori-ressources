@@ -8,6 +8,7 @@ import NomenclatureView from './components/nomenclature/NomenclatureView'
 import MainHeader from './components/Navigation/MainHeader';
 import MainFooter from './components/Footer/MainFooter'
 import Info from './components/pages/info'
+import { AuthContext } from 'context/auth-context'
 
 import Hero from 'react-bulma-components/lib/components/hero'
 import Heading from 'react-bulma-components/lib/components/heading'
@@ -19,6 +20,10 @@ import './App.css'
 
 function App() {
   return (
+    /* Every component in our router has acess to AuthContext. 
+    The provider takes a value prop that we bind with the initial value.
+    Every time this value changes, all components that listen to our context will re-render */
+    <AuthContext.Provider value={{}}>
     <Router>
       <MainHeader />
         {/* A <Switch> looks through its children <Route>s and
@@ -27,9 +32,9 @@ function App() {
         <Switch>
           <Route path="/nomenclature/view/:nomenclatureId" component={NomenclatureView} />
           <Route path="/nomenclature/:nomenclatureId" component={Nomenclature} />
-          <ProtectedRoute path="/add" component={DropZone} / >
+          <ProtectedRoute path="/add" component={DropZone} />
           <Route path="/info" component={Info} />
-          <Route path="/">
+          <Route path="/" exact>
             <Hero  color="primary" gradient >
               <Hero.Body>
                 <Container>
@@ -48,6 +53,7 @@ function App() {
         </main>
         <MainFooter />
     </Router>
+    </AuthContext.Provider>
   );
 }
 
