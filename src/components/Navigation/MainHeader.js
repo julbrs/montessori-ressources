@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import { Link} from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import Navbar from 'react-bulma-components/lib/components/navbar'
 import Login from './Login'
 import client from '../../tools/client';
+import { AuthContext } from '../../context/auth-context'
 
 const MainHeader = (props) => {
 
@@ -20,6 +21,8 @@ const MainHeader = (props) => {
       })
   }, [])
 
+    const auth = useContext(AuthContext)
+
   return (
       <Navbar color="primary" fixed="top" active={false} transparent={false}>
         <Navbar.Brand>
@@ -34,9 +37,10 @@ const MainHeader = (props) => {
             <Navbar.Item renderAs={Link} to={`/`}>
               Nomenclatures
             </Navbar.Item>
+            {auth.isLoggedIn && (
             <Navbar.Item renderAs={Link} to={`/add`}>
               Créer
-            </Navbar.Item>
+            </Navbar.Item> )}
             <Navbar.Item renderAs={Link} to={`/info`}>
               À propos
             </Navbar.Item>
