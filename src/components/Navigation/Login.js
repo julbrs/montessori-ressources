@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 //import FacebookLogin from 'react-facebook-login'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import client from '../../tools/client';
@@ -8,8 +8,11 @@ import { AiFillFacebook, AiFillGoogleCircle} from 'react-icons/ai';
 
 import {FACEBOOK_CLIENT_ID, GOOGLE_CLIENT_ID} from '../../tools/config'
 import GoogleLogin from 'react-google-login'
+import { AuthContext } from '../../context/auth-context'
 
 const Login = (props) => {
+
+  const auth = useContext(AuthContext)
 
   // when you auth via google grab the token
   const handleGoogle = async (response) => {
@@ -18,6 +21,7 @@ const Login = (props) => {
     })
     props.setUser(res.data)
     localStorage.setItem('token', res.headers['x-auth-token'])
+    auth.login()
   }
 
   // when you auth via facebook grab the token
@@ -27,6 +31,7 @@ const Login = (props) => {
     })
     props.setUser(res.data)
     localStorage.setItem('token', res.headers['x-auth-token'])
+    auth.login()
   }
 
   // when you logout clean the token

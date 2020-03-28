@@ -21,6 +21,8 @@ const MainHeader = (props) => {
       })
   }, [])
 
+/* Call useContext and pass in the AuthContext. We get back an object which will hold the latest context. 
+The component will re-render whenever this context changes */
     const auth = useContext(AuthContext)
 
   return (
