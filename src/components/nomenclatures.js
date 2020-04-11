@@ -13,7 +13,7 @@ const Nomenclatures = () => {
     client.get('/nomenclatures')
       .then(
         (result) => {
-          setNomenclatures(result.data)
+          setNomenclatures(result.data.items)
           isLoading(false)
         }
       )

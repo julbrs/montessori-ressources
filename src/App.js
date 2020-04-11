@@ -8,6 +8,7 @@ import NomenclatureView from './components/nomenclature/NomenclatureView'
 import MainHeader from './components/Navigation/MainHeader';
 import MainFooter from './components/Footer/MainFooter'
 import Info from './components/pages/info'
+import Admin from './components/pages/admin'
 
 import Hero from 'react-bulma-components/lib/components/hero'
 import Heading from 'react-bulma-components/lib/components/heading'
@@ -29,6 +30,7 @@ function App() {
           <Route path="/nomenclature/:nomenclatureId" component={Nomenclature} />
           <ProtectedRoute path="/add" component={DropZone} / >
           <Route path="/info" component={Info} />
+          <Route path="/admin" component={Admin} />
           <Route path="/">
             <Hero  color="primary" gradient >
               <Hero.Body>
