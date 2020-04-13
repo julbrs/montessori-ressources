@@ -15,10 +15,10 @@ const Nomenclature = props => {
             {props.nomenclature.cards.slice(0, 1).map(card => (
               <Card
                 key={card._id}
-                alt={card.originalname}
-                src={card.location}
+                alt={card.name}
+                mainImage={card.image}
                 imageCount={props.nomenclature.cards.length}
-                images={props.nomenclature.cards}
+                cards={props.nomenclature.cards}
               />
             ))}
             <Button

@@ -6,16 +6,17 @@ import Tag from 'react-bulma-components/lib/components/tag';
 import './Card.css';
 
 const Card = props => {
-  const cardPreviewImages = props.images.map((image, index) => {
+  const cardPreviewImages = props.cards.map((card, index) => {
     return (
       <img
         className="image-preview"
         key={index.toString()}
-        src={image.location}
-        alt={image.alt}
+        src={card.image.url}
+        alt={card.alt}
       />
     );
   });
+
   return (
     <div className="thumbnails">
       <div className="image-previews-container">{cardPreviewImages}</div>
@@ -23,7 +24,7 @@ const Card = props => {
         {props.imageCount}
       </Tag>
       <div className="thumbnail">
-        <img src={props.src} alt={props.alt} />
+        <img src={props.mainImage.url} alt={props.alt} />
       </div>
     </div>
   );
