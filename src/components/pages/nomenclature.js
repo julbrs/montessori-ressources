@@ -1,6 +1,6 @@
 // in posts.js
 import React from 'react';
-import { ReferenceField, List, Datagrid, Edit, Create, SimpleForm, TextField, EditButton, TextInput, DateInput } from 'react-admin';
+import { ChipField, ArrayField, SingleFieldList, ReferenceField, List, Datagrid, Edit, Create, SimpleForm, TextField, EditButton, TextInput, DateInput } from 'react-admin';
 import BookIcon from '@material-ui/icons/Book';
 export const NomenclatureIcon = BookIcon;
 
@@ -8,8 +8,13 @@ export const NomenclatureList = (props) => (
     <List {...props}>
         <Datagrid>
           <ReferenceField source="_id" reference="s"><TextField source="_id" /></ReferenceField>
-          <TextField source="cards" />
           <TextField source="name" />
+          <ArrayField source="cards">
+              <SingleFieldList>
+                  <ChipField source="_id" />
+                </SingleFieldList>
+            </ArrayField>
+          
           <EditButton basePath="/nomenclature" />
         </Datagrid>
     </List>
