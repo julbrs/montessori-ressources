@@ -86,7 +86,7 @@ const NomenclaturePage = (props) => {
   return (
     <Page wrap={false} key={props.pageId} size="A4" orientation="landscape" style={styles.page}>
       {props.cards.map((card) => (
-        <View key={card._id} style={styles.section}>
+        <View key={card.id} style={styles.section}>
           <Image style={styles.image} src={card.location}/>
           <Text style={styles.label}>{card.originalname}</Text>
         </View>

@@ -8,7 +8,7 @@ import NomenclatureView from './components/nomenclature/NomenclatureView'
 import MainHeader from './components/Navigation/MainHeader';
 import MainFooter from './components/Footer/MainFooter'
 import Info from './components/pages/info'
-import Admin from './components/pages/admin'
+import Admin from './components/Admin/index'
 
 import Hero from 'react-bulma-components/lib/components/hero'
 import Heading from 'react-bulma-components/lib/components/heading'

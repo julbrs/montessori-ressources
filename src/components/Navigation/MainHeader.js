@@ -40,6 +40,9 @@ const MainHeader = (props) => {
             <Navbar.Item renderAs={Link} to={`/info`}>
               À propos
             </Navbar.Item>
+            <Navbar.Item renderAs={Link} to={`/admin`}>
+              Admin
+            </Navbar.Item>
           </Navbar.Container>
 
           <Login user={user} setUser={setUser}/>
