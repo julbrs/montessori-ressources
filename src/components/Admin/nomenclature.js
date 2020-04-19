@@ -25,8 +25,14 @@ const NomenclatureTitle = ({ record }) => {
     return <span>Nomenclature {record ? `"${record.title}"` : ''}</span>;
 };
 
-export const NomenclatureEdit = (props) => (
-    <Edit undoable={false}NomenclatureTitle title={<NomenclatureTitle />} {...props}>
+const ImageFieldInForm = ({variant, ...props}) => {
+  return (
+    <img src={props.record.location} width="300px" alt="card content"/>
+  )
+}
+
+export const NomenclatureEdit = (props, record) => (
+    <Edit undoable={false} title={<NomenclatureTitle />} {...props}>
         <SimpleForm>
             <TextInput disabled source="id" />
             <TextInput source="name" />
@@ -43,6 +49,7 @@ export const NomenclatureEdit = (props) => (
             <ArrayInput source="cards">
                 <SimpleFormIterator disableAdd>
                     <TextInput label="Label" source="originalname" />
+                    <ImageFieldInForm source="location" />
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>
