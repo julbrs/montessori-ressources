@@ -29,8 +29,10 @@ const Nomenclatures = () => {
   return (
     <Section>
       <Columns multiline={true} breakpoint="desktop">
-      {nomenclatures.map(nomenclature => (
-              <Nomenclature key={nomenclature._id} nomenclature={nomenclature} />
+      {nomenclatures
+        .filter(n => n.status !== 'DRAFT')
+        .map(nomenclature => (
+              <Nomenclature key={nomenclature.id} nomenclature={nomenclature} />
           ))}
       </Columns>
     </Section>

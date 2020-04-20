@@ -13,7 +13,7 @@ const NomenclatureView = ()  => {
   // handle the card change
   const onChangeCard = (card) => {
     let cards = nomenclature.cards.map(e => {
-      if(e._id === card.id) {
+      if(e.id === card.id) {
         return card
       }
       else {
@@ -70,7 +70,7 @@ const NomenclatureView = ()  => {
       <Columns multiline={true}>
         {nomenclature.cards.map(card => (
           <CardView
-            key={card._id}
+            key={card.id}
             card={card}
             onChange={onChangeCard}
           />

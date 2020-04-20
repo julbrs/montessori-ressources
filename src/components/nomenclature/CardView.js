@@ -9,7 +9,7 @@ const CardView = props => {
     <Columns.Column size={6}>
       <Box>
         <Image
-          key={props.card._id}
+          key={props.card.id}
           alt={props.card.originalname}
           src={props.card.location}
         />
