@@ -5,6 +5,7 @@ import Button from 'react-bulma-components/lib/components/button';
 import Columns from 'react-bulma-components/lib/components/columns';
 import Box from 'react-bulma-components/lib/components/box';
 import Card from './Card/Card';
+import Tags from './Tags'
 
 const Nomenclature = props => {
   return (
@@ -14,7 +15,7 @@ const Nomenclature = props => {
           <div className="media-left">
             {props.nomenclature.cards.slice(0, 1).map(card => (
               <Card
-                key={card._id}
+                key={card.id}
                 alt={card.originalname}
                 src={card.location}
                 imageCount={props.nomenclature.cards.length}
@@ -23,13 +24,13 @@ const Nomenclature = props => {
             ))}
             <Button
               renderAs={Link}
-              to={`/nomenclature/${props.nomenclature._id}`}
+              to={`/nomenclature/${props.nomenclature.id}`}
             >
               Télécharger
             </Button>
             <Button
               renderAs={Link}
-              to={`/nomenclature/view/${props.nomenclature._id}`}
+              to={`/nomenclature/view/${props.nomenclature.id}`}
             >
               Voir
             </Button>
@@ -39,12 +40,8 @@ const Nomenclature = props => {
             <h2 className="title is-3">
               {props.nomenclature.name ? props.nomenclature.name : 'bla'}
             </h2>
-            <small>Par user</small>
-            <div className="tags">
-              <span className="tag">Gospel</span>
-              <span className="tag">Chant</span>
-              <span className="tag">Religieux</span>
-            </div>
+            <small>Par <strong>{props.nomenclature.author}</strong></small>
+            <Tags tags={props.nomenclature.tags} />
             <div className="columns">
               <div className="column">
                 <div className="field is-grouped is-grouped-multiline">

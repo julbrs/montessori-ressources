@@ -1,17 +1,17 @@
 import React from 'react'
-import Tag from './Tag'
 
+const Tag = props => {
+    return <span className="tag">{props.name}</span>
+}
 
-const TagsList = props => {
-
+const Tags = props => {
     return (
-        <ul>
+        <div className="tags">
             {props.tags.map(tag => {
                 return <Tag key={tag.id} id={tag.id} name={tag.name}/>
             })}
-        </ul>
+        </div>
     ) 
 }
 
-
-export default TagsList
+export default Tags

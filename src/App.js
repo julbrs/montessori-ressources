@@ -9,6 +9,7 @@ import MainHeader from './components/Navigation/MainHeader';
 import MainFooter from './components/Footer/MainFooter'
 import Info from './components/pages/info'
 import { AuthContext } from 'context/auth-context'
+import Admin from './components/Admin/index'
 
 import Hero from 'react-bulma-components/lib/components/hero'
 import Heading from 'react-bulma-components/lib/components/heading'
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/nomenclature/:nomenclatureId" component={Nomenclature} />
           <ProtectedRoute path="/add" component={DropZone} />
           <Route path="/info" component={Info} />
+          <Route path="/admin" component={Admin} />
           <Route path="/" exact>
             <Hero  color="primary" gradient >
               <Hero.Body>

@@ -43,10 +43,10 @@ const uploadFiles = async() => {
     return new Promise((resolve, reject) => {
       Resizer.imageFileResizer(
         file,
-        1650,
-        1650,
-        'PNG',
-        100,
+        1200,
+        1200,
+        'JPEG',
+        85,
         0,
         blob => {
           fd.append('photos', blob, file.originalname)

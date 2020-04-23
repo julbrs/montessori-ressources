@@ -46,6 +46,9 @@ The component will re-render whenever this context changes */
             <Navbar.Item renderAs={Link} to={`/info`}>
               À propos
             </Navbar.Item>
+            <Navbar.Item renderAs={Link} to={`/admin`}>
+              Admin
+            </Navbar.Item>
           </Navbar.Container>
 
           <Login user={user} setUser={setUser}/>
