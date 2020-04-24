@@ -38,6 +38,7 @@ const Login = (props) => {
   const logout = () => {
     localStorage.removeItem('token')
     props.setUser(null)
+    auth.logout()
   }
 
   if(props.user) {
