@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 //import FacebookLogin from 'react-facebook-login'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import client from '../../tools/client';
@@ -12,14 +12,29 @@ import { AuthContext } from '../../context/auth-context'
 
 const Login = (props) => {
 
+  const [user, setUser] = useState()
   const auth = useContext(AuthContext)
+
+  // this effect will grab user info at component mount
+  useEffect(() => {
+    client.get('auth')
+      .then((data) => {
+        setUser(data.data)
+        auth.login()
+      })
+      .catch((err) => {
+        // if auth error let's remove the token
+        localStorage.removeItem('token')
+        auth.logout()
+      })
+    }, [auth])
 
   // when you auth via google grab the token
   const handleGoogle = async (response) => {
     let res = await client.post(`auth/google`, {
       access_token: `${response.accessToken}`
     })
-    props.setUser(res.data)
+    setUser(res.data)
     localStorage.setItem('token', res.headers['x-auth-token'])
     auth.login()
   }
@@ -29,7 +44,7 @@ const Login = (props) => {
     let res = await client.post(`auth/facebook`, {
       access_token: `${response.accessToken}`
     })
-    props.setUser(res.data)
+    setUser(res.data)
     localStorage.setItem('token', res.headers['x-auth-token'])
     auth.login()
   }
@@ -37,15 +52,15 @@ const Login = (props) => {
   // when you logout clean the token
   const logout = () => {
     localStorage.removeItem('token')
-    props.setUser(null)
+    setUser(null)
     auth.logout()
   }
 
-  if(props.user) {
+  if(user) {
     return (
       <Navbar.Container position="end">
         <Navbar.Item onClick={logout}>
-          Logout ({props.user.name})
+          Logout ({user.name})
         </Navbar.Item>
       </Navbar.Container>
     )
