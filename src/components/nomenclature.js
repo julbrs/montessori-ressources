@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/auth-context'
 
 import Button from 'react-bulma-components/lib/components/button';
 import Columns from 'react-bulma-components/lib/components/columns';
@@ -8,6 +9,9 @@ import Card from './Card/Card';
 import Tags from './Tags'
 
 const Nomenclature = props => {
+  
+  const auth = useContext(AuthContext)
+
   return (
     <Columns.Column breakpoint="tablet">
       <Box>
@@ -22,18 +26,19 @@ const Nomenclature = props => {
                 images={props.nomenclature.cards}
               />
             ))}
+            {auth.isLoggedIn && (
             <Button
               renderAs={Link}
               to={`/nomenclature/${props.nomenclature.id}`}
             >
               Télécharger
-            </Button>
-            <Button
+            </Button> )}
+            {/* <Button
               renderAs={Link}
               to={`/nomenclature/view/${props.nomenclature.id}`}
             >
               Voir
-            </Button>
+            </Button> */}
           </div>
 
           <div className="media-content">
