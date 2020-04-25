@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProtectedRoute from './components/Navigation/ProtectedRoute'
-import DropZone from './components/dropzone'
+import Add from './components/add'
 import Nomenclatures from './components/nomenclatures'
 import Nomenclature from './components/pdf/nomenclature'
 import NomenclatureView from './components/nomenclature/NomenclatureView'
@@ -45,7 +45,7 @@ const App = () => {
         <Switch>
           <Route path="/nomenclature/view/:nomenclatureId" component={NomenclatureView} />
           <Route path="/nomenclature/:nomenclatureId" component={Nomenclature} />
-          <ProtectedRoute path="/add" component={DropZone} />
+          <ProtectedRoute path="/add" component={Add} />
           <Route path="/info" component={Info} />
           <Route path="/admin" component={Admin} />
           <Route path="/" exact>
