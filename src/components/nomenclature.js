@@ -16,7 +16,7 @@ const Nomenclature = props => {
   const auth = useContext(AuthContext)
 
   return (
-    <Columns.Column breakpoint="mobile">
+    <Columns.Column size = "half" breakpoint="mobile">
       <Box>
         <Media>
           <Media.Item renderAs="figure" position="left">
@@ -32,16 +32,9 @@ const Nomenclature = props => {
             {auth.isLoggedIn && (
             <Button
               renderAs={Link}
-              to={`/nomenclature/${props.nomenclature.id}`}
-            >
+              to={`/nomenclature/${props.nomenclature.id}`}>
               Télécharger
             </Button> )}
-            {/* <Button
-              renderAs={Link}
-              to={`/nomenclature/view/${props.nomenclature.id}`}
-            >
-              Voir
-            </Button> */}
           </Media.Item>
 
           <Media.Item>
@@ -51,70 +44,6 @@ const Nomenclature = props => {
             </Heading>
             <small>Par <strong>{props.nomenclature.author}</strong></small>
             <Tags tags={props.nomenclature.tags} />
-            <Columns>
-              <Columns.Column>
-                <div className="field is-grouped is-grouped-multiline">
-                  <div className="control">
-                    <div className="tags has-addons">
-                      <span className="tag is-dark">Images</span>
-                      <span className="tag is-success">Oui</span>
-                    </div>
-                  </div>
-
-                  <div className="control">
-                    <div className="tags has-addons">
-                      <span className="tag is-dark">Label</span>
-                      <span className="tag is-success">Oui</span>
-                    </div>
-                  </div>
-
-                  <div className="control">
-                    <div className="tags has-addons">
-                      <span className="tag is-dark">Description</span>
-                      <span className="tag is-success">Oui</span>
-                    </div>
-                  </div>
-
-                  <div className="control">
-                    <div className="tags has-addons">
-                      <span className="tag is-dark">Texte à trous</span>
-                      <span className="tag is-danger">Non</span>
-                    </div>
-                  </div>
-                </div>
-              </Columns.Column>
-
-              <Columns.Column>
-                <nav className="level is-mobile">
-                  <div className="level-left">
-                    <a className="level-item" href="/" aria-label="reply">
-                      <span className="icon is-small">
-                        <i className="fa fa-reply" aria-hidden="true"></i>
-                      </span>
-                    </a>
-                    <a className="level-item" href="/" aria-label="like">
-                      <span className="icon is-small">
-                        <i className="fa fa-heart" aria-hidden="true"></i>
-                      </span>
-                    </a>
-                  </div>
-                </nav>
-              </Columns.Column>
-            </Columns>
-            <nav className="level">
-              <div className="level-item has-text-centered">
-                <div>
-                  <p className="heading">Téléchargements</p>
-                  <p className="title is-5">3,456</p>
-                </div>
-              </div>
-              <div className="level-item has-text-centered">
-                <div>
-                  <p className="heading">J'aime</p>
-                  <p className="title is-5">123</p>
-                </div>
-              </div>
-            </nav>
             </Content>
           </Media.Item>
         </Media>
