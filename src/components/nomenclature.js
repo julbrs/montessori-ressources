@@ -5,6 +5,9 @@ import { AuthContext } from '../context/auth-context'
 import Button from 'react-bulma-components/lib/components/button';
 import Columns from 'react-bulma-components/lib/components/columns';
 import Box from 'react-bulma-components/lib/components/box';
+import Media from 'react-bulma-components/lib/components/media';
+import Content from 'react-bulma-components/lib/components/content';
+import Heading from 'react-bulma-components/lib/components/heading';
 import Card from './Card/Card';
 import Tags from './Tags'
 
@@ -13,10 +16,10 @@ const Nomenclature = props => {
   const auth = useContext(AuthContext)
 
   return (
-    <Columns.Column breakpoint="tablet">
+    <Columns.Column breakpoint="mobile">
       <Box>
-        <article className="media">
-          <div className="media-left">
+        <Media>
+          <Media.Item renderAs="figure" position="left">
             {props.nomenclature.cards.slice(0, 1).map(card => (
               <Card
                 key={card.id}
@@ -39,16 +42,17 @@ const Nomenclature = props => {
             >
               Voir
             </Button> */}
-          </div>
+          </Media.Item>
 
-          <div className="media-content">
-            <h2 className="title is-3">
-              {props.nomenclature.name ? props.nomenclature.name : 'bla'}
-            </h2>
+          <Media.Item>
+            <Content>
+            <Heading size={3}>
+              {props.nomenclature.name ? props.nomenclature.name : 'sans nom'}
+            </Heading>
             <small>Par <strong>{props.nomenclature.author}</strong></small>
             <Tags tags={props.nomenclature.tags} />
-            <div className="columns">
-              <div className="column">
+            <Columns>
+              <Columns.Column>
                 <div className="field is-grouped is-grouped-multiline">
                   <div className="control">
                     <div className="tags has-addons">
@@ -78,8 +82,9 @@ const Nomenclature = props => {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="column">
+              </Columns.Column>
+
+              <Columns.Column>
                 <nav className="level is-mobile">
                   <div className="level-left">
                     <a className="level-item" href="/" aria-label="reply">
@@ -94,8 +99,8 @@ const Nomenclature = props => {
                     </a>
                   </div>
                 </nav>
-              </div>
-            </div>
+              </Columns.Column>
+            </Columns>
             <nav className="level">
               <div className="level-item has-text-centered">
                 <div>
@@ -110,8 +115,9 @@ const Nomenclature = props => {
                 </div>
               </div>
             </nav>
-          </div>
-        </article>
+            </Content>
+          </Media.Item>
+        </Media>
       </Box>
     </Columns.Column>
   );
