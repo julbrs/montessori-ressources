@@ -52,11 +52,8 @@ const App = () => {
             <Hero  color="primary" gradient >
               <Hero.Body>
                 <Container>
-                  <Heading>
+                  <Heading title size={3}>
                     <span role="img" aria-label="book">📗</span> Montessori Ressources, une plateforme ouverte et collaborative de matériel Montessori...
-                  </Heading>
-                  <Heading subtitle size={3}>
-
                   </Heading>
                 </Container>
               </Hero.Body>
