@@ -9,7 +9,7 @@ const MainHeader = props => {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
-    setOpen(true)
+    setOpen(!open)
   }
 
   /* Call useContext and pass in the AuthContext. We get back an object which will hold the latest context. 
