@@ -17,7 +17,7 @@ const Nomenclature = props => {
   const auth = useContext(AuthContext)
 
   return (
-    <Columns.Column size= "half" breakpoint="desktop">
+    <Columns.Column size="half">
       <Box>
         <Media className="media_card">
           <Media.Item renderAs="image" position="left">

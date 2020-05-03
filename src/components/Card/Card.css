@@ -67,3 +67,14 @@
   }
 
 }
+
+@media (max-width: 320px) {
+  .thumbnails {
+    max-width: 210px;
+  }
+
+  .thumbnail {
+    width: 210px;
+    height: 210px;
+  }
+}
