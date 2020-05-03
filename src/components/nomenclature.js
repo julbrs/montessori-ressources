@@ -10,6 +10,7 @@ import Content from 'react-bulma-components/lib/components/content';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Card from './Card/Card';
 import Tags from './Tags'
+import './nomenclature.css'
 
 const Nomenclature = props => {
   
@@ -18,8 +19,8 @@ const Nomenclature = props => {
   return (
     <Columns.Column size= "half" breakpoint="desktop">
       <Box>
-        <Media>
-          <Media.Item renderAs="figure" position="left">
+        <Media className="media_card">
+          <Media.Item renderAs="image" position="left">
             {props.nomenclature.cards.slice(0, 1).map(card => (
               <Card
                 key={card.id}
@@ -37,13 +38,13 @@ const Nomenclature = props => {
             </Button> )}
           </Media.Item>
 
-          <Media.Item>
+          <Media.Item position="right">
             <Content>
-            <Heading size={3}>
-              {props.nomenclature.name ? props.nomenclature.name : 'sans nom'}
-            </Heading>
-            <small>Par <strong>{props.nomenclature.author}</strong></small>
-            <Tags tags={props.nomenclature.tags} />
+              <Heading size={3}>
+                {props.nomenclature.name ? props.nomenclature.name : 'sans nom'}
+              </Heading>
+              <small>Par <strong>{props.nomenclature.author}</strong></small>
+              <Tags tags={props.nomenclature.tags} />
             </Content>
           </Media.Item>
         </Media>

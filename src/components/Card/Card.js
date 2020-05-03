@@ -18,6 +18,7 @@ const Card = props => {
       <Tag rounded size="large" className="nomenclature-image-count">
         {props.imageCount}
       </Tag>
+     
       <div className="thumbnail">
         <img src={props.src} alt={props.alt}/>
       </div>
