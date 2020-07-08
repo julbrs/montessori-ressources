@@ -1,11 +1,13 @@
 // in posts.js
 import React from 'react';
-import { SelectInput, SimpleFormIterator, DateField, ArrayInput, ChipField, ArrayField, SingleFieldList, List, Datagrid, Edit, SimpleForm, TextField, EditButton, TextInput } from 'react-admin';
+import { Pagination, SelectInput, SimpleFormIterator, DateField, ArrayInput, ChipField, ArrayField, SingleFieldList, List, Datagrid, Edit, SimpleForm, TextField, EditButton, TextInput } from 'react-admin';
 import BookIcon from '@material-ui/icons/Book';
 export const NomenclatureIcon = BookIcon;
 
+const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
+
 export const NomenclatureList = (props) => (
-         <List {...props}>
+         <List {...props} pagination={<PostPagination />}>
            <Datagrid>
              <TextField source="name" />
              <TextField source="status" />
