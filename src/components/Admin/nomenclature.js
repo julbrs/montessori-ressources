@@ -7,7 +7,7 @@ export const NomenclatureIcon = BookIcon;
 const PostPagination = props => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} {...props} />;
 
 export const NomenclatureList = (props) => (
-         <List {...props} pagination={<PostPagination />}>
+         <List {...props} sort={{ field: 'created', order: 'DESC' }} pagination={<PostPagination />}>
            <Datagrid>
              <TextField source="name" />
              <TextField source="status" />
@@ -16,8 +16,8 @@ export const NomenclatureList = (props) => (
                  <ChipField source="originalname" />
                </SingleFieldList>
              </ArrayField>
-             <DateField source="created" />
-             <DateField source="updated" />
+             <DateField source="created" showTime/>
+             <DateField source="updated" showTime/>
              <EditButton />
            </Datagrid>
          </List>
