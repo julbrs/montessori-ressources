@@ -97,12 +97,13 @@ export default {
         }).then(({ json }) => ({ data: json })),
 
     deleteMany: (resource, params) => {
-        const query = {
-            filter: JSON.stringify({ id: params.ids}),
-        };
-        return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
+        // not optimal but let's use the delete endpoint that work for one id
+        // wrap all calls in an array to use Promise.all to return the right content
+        let promiseArray = params.ids.map(id => httpClient(`${apiUrl}/${resource}/${id}`, {
             method: 'DELETE',
-            body: JSON.stringify(params.data),
-        }).then(({ json }) => ({ data: json }));
+        }))
+
+        return Promise.all(promiseArray).then(({ json }) => ({ data: json }))
+
     },
 };
