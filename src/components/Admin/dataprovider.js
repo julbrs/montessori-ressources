@@ -31,7 +31,7 @@ export default {
 
         return httpClient(url).then(({ headers, json }) => ({
             data: json,
-            total: parseInt(headers.get('content-range').split('/').pop(), 20),
+            total: parseInt(headers.get('content-range').split('/').pop()),
         }));
     },
 
