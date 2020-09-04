@@ -15,8 +15,6 @@ import banner from 'images/banner.jpg'
 import Image from 'react-bulma-components/lib/components/image'
 
 import './App.scss'
-import './App.css'
-
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn ] = useState(false)

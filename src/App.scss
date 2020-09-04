@@ -1,3 +1,11 @@
-@import "~react-bulma-components/src/index.sass"
+@import "~react-bulma-components/src/index.sass";
 
 
+body {
+    background-color: #aabccf;
+}
+
+// handle the fix navbar
+main {
+    padding-top: 2em;
+}
