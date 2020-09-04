@@ -7,7 +7,7 @@ import Content from 'react-bulma-components/lib/components/content'
 import Section from 'react-bulma-components/lib/components/section'
 import Image from 'react-bulma-components/lib/components/image'
 
-import school from '../../images/school.jpg'
+import about from '../../images/about.jpg'
 
 const Info = () => {
   return(
@@ -29,7 +29,7 @@ const Info = () => {
       </Hero>
       <Section>
         <Content size="medium">
-          <Image  src={school} style={{ width: "50%", marginLeft: "auto",  marginRight: "auto"}}/>
+          <Image  src={about} style={{ width: "50%", marginLeft: "auto",  marginRight: "auto"}}/>
           <p>
           Maria Montessori, nous a légué une philosophie de pensée, une ouverture permettant de
           considérer l’enfant comme étant l’adulte de demain, un apprenant qui se nourrit de son

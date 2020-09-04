@@ -11,9 +11,8 @@ import Info from './components/pages/info'
 import { AuthContext } from 'context/auth-context'
 import Admin from './components/Admin/index'
 
-import Hero from 'react-bulma-components/lib/components/hero'
-import Heading from 'react-bulma-components/lib/components/heading'
-import Container from 'react-bulma-components/lib/components/container'
+import banner from 'images/banner.jpg'
+import Image from 'react-bulma-components/lib/components/image'
 
 import './App.scss'
 import './App.css'
@@ -49,15 +48,7 @@ const App = () => {
           <Route path="/info" component={Info} />
           <Route path="/admin" component={Admin} />
           <Route path="/" exact>
-            <Hero  color="primary" gradient >
-              <Hero.Body>
-                <Container>
-                  <Heading title size={3}>
-                    <span role="img" aria-label="book">📗</span> Montessori Ressources, une plateforme ouverte et collaborative de matériel Montessori...
-                  </Heading>
-                </Container>
-              </Hero.Body>
-            </Hero>
+            <Image  src={banner} style={{ width: "100%", marginLeft: "auto",  marginRight: "auto"}}/>
             <Nomenclatures />
           </Route>
         </Switch>
