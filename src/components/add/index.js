@@ -6,7 +6,9 @@ import Button from 'react-bulma-components/lib/components/button';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Media from 'react-bulma-components/lib/components/media';
 import Image from 'react-bulma-components/lib/components/image';
+import Notification from 'react-bulma-components/lib/components/notification';
 import Content from 'react-bulma-components/lib/components/content';
+import Container from 'react-bulma-components/lib/components/container';
 import {Input, Field, Label, Control} from 'react-bulma-components/lib/components/form';
 import Resizer from 'react-image-file-resizer';
 import client from '../../tools/client';
@@ -18,6 +20,7 @@ const aside = {
 var DropZone = () => {
   const [name, setName] = useState('Nouvelle nomenclature')
   const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(null)
   const [uploadProgress, setUploadProgress] = useState(0)
   const [uploading, setUploading] = useState(false)
   const [myFiles, setMyFiles] = useState([])
@@ -146,9 +149,10 @@ const uploadFiles = async() => {
         setSuccess(true)
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err.response)
         setUploading(false)
-        setSuccess(true)
+        setSuccess(false)
+        setError(err.response.data.message)
       })
     })
 }
@@ -167,18 +171,26 @@ if (success) {
   );
 } else {
   return (
-    <Button
-      disabled={myFiles.length <= 0 || uploading}
-      onClick={uploadFiles}
-    >
-      Envoyer !
-    </Button>
+    <Content>
+      {error != null && 
+        <Notification color="danger">
+          Une erreur est survenue lors de l'envoi: {error}
+        </Notification>
+      }
+      <Button
+        disabled={myFiles.length <= 0 || uploading}
+        onClick={uploadFiles}
+      >
+        Envoyer !
+      </Button>
+    </Content>
+
   );
 }
 }
 
   return (
-    <div>
+    <Container style={{marginBottom: "30px"}}>
       <Heading  size={5}>
         Vous pouvez participer à ce projet en fournissant vos propres images pour faire des
         nomenclatures !
@@ -205,15 +217,9 @@ if (success) {
       {askName()}
         {preview}
       </aside>
-      <Button.Group>
-        {renderActions()}
-      </Button.Group>
+      {renderActions()}
       {renderProgress()}
-      <div>
-
-      </div>
-    </div>
-
+    </Container>
   )
 }
 
