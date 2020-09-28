@@ -26,6 +26,8 @@ Available [here](https://montessori-ressources-api.herokuapp.com/api-docs/)
 
 ## Technical choices
 
+- we are using [React Bulma Components](https://couds.github.io/react-bulma-components/) for 
+React CSS components. Please use it instead of creating specific CSS.
 - We are using [functional component](https://reactjs.org/docs/components-and-props.html)
  when possible.
 - The PDF generation is done using [react-pdf](https://react-pdf.org). It is a set
