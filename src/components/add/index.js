@@ -119,7 +119,7 @@ const uploadFiles = async() => {
         file,
         1200,
         1200,
-        'JPEG',
+        'PNG',
         85,
         0,
         blob => {
