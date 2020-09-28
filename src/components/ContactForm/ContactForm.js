@@ -27,28 +27,25 @@ class ContactForm extends Component {
 
     render() {
         return (
-          <form className="contactForm" onSubmit={this.handleSubmit}>
+          <form className="contact" netlify>
             <p>
-              <label>
-                  Email
+              <label>Email
                 <input
                     name="contactEmail"
-                  autoComplete="email"
-                  type="text"
-                  value={this.state.contactEmail}
-                  onChange={this.handleChange}
+                    autoComplete="email"
+                    type="text"
                 />
               </label>
             </p>
             <p>
                 <label>
                     Votre Demande:
-                    <textarea name="demande" value={this.state.demande} onChange={this.handleChange} />        
+                    <textarea name="demande" />        
                 </label>
             </p>
 
             <p>
-              <button class="disabled" disabled type="submit">Envoyer votre demande</button>
+              <button type="submit">Envoyer votre demande</button>
             </p>
           </form>
         )
