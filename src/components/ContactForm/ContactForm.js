@@ -1,61 +1,53 @@
 import React, { Component } from 'react'
-
-
+import { Field, Control, Label, Input, Textarea } from 'react-bulma-components/lib/components/form';
+import Button from 'react-bulma-components/lib/components/button';
 import './ContactForm.css'
 
 class ContactForm extends Component {
 
     state = {
-        contactEmail: '',
-        demande:''
+        email: '',
+        message:''
     }
 
-    handleChange = event => { 
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        
-        this.setState({
-          [name]: value    
-        })
-    }
-
-    handleSubmit = event => {
-        console.log(`new request from [${this.state.contactEmail}] about [${this.state.demande} !]`);
-        event.preventDefault()
+    onChange = (evt) => {
+      const value = evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value;
+      this.setState({
+        [evt.target.name]: value,
+      });
     }
 
     render() {
+        const {email, message} = this.state
+          
         return (
-          <form className="contact" netlify>
-            <p>
-              <label>Email
-                <input
-                    name="contactEmail"
-                    autoComplete="email"
-                    type="text"
-                />
-              </label>
-            </p>
-            <p>
-                <label>
-                    Votre Demande:
-                    <textarea name="demande" />        
-                </label>
-            </p>
+          
+          <form className="contact" action="/thank-you" netlify>
+              <Field>
+                <Label>Email</Label>
+                  <Control>
+                    <Input name="email" type="email" placeholder="your-email@domain.ext" value={email} onChange={this.onChange} />
+                  </Control>
+              </Field>
 
-            <p>
-              <button type="submit">Envoyer votre demande</button>
-            </p>
+              <Field>
+                <Label>Message</Label>
+                <Control>
+                  <Textarea name="message" value={message} onChange={this.onChange} placeholder="Votre message..." />
+                </Control>
+              </Field>
+
+              <Field kind="group">
+                <Control>
+                  <Button type="primary">Envoyer</Button>
+                </Control>
+                <Control>
+                  <Button color="link">Annuler</Button>
+                </Control>
+              </Field>
           </form>
         )
     }
 }
-    
-/*ContactForm.propTypes = {
-      guesses: PropTypes.number.isRequired,
-      onStored: PropTypes.func.isRequired,
-    }
-*/
-    
+        
 export default ContactForm

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProtectedRoute from './components/Navigation/ProtectedRoute'
 import Add from './components/add'
 import Contact from './components/pages/contact'
+import ContactConfirmation from './components/pages/thank-you'
 import Image from 'react-bulma-components/lib/components/image'
 import Info from './components/pages/info'
 import MainHeader from './components/Navigation/MainHeader';
@@ -46,6 +47,8 @@ const App = () => {
           <Route path="/info" component={Info} />
           <Route path="/contact" component={Contact} />
           <Route path="/admin" component={Admin} />
+          <Route path="/thank-you" component={ContactConfirmation} />
+
           <Route path="/" exact>
             <Image  src={banner} style={{ width: "100%", marginLeft: "auto",  marginRight: "auto"}}/>
             <Nomenclatures />
