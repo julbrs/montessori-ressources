@@ -6,24 +6,27 @@ import client from '../../tools/client'
 
 // Create styles
 const styles = StyleSheet.create({
-  page: {
+  cardContainer: {
+    marginLeft: 28,
+    marginRight: 28,
+    marginTop: 28,
     flexDirection: 'row',
-    marginLeft: 10,
-    marginRight: 10,
   },
-  section: {
-    margin: 10,
-    padding: 0,
-    flex: 1,
+  card: {
     textAlign: "center",
   },
-  image: {
-    maxWidth: "13.5cm",
-    maxHeight: "13.5cm",
+  imageContainer: {
+    width: 368, // around 13 cm
+    height: 368, // around 13 cm
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   label: {
-    maxWidth: "13.5cm",
-    marginTop: 20,
+    width: 368,
+    height: 56, // around 2cm
+    marginTop: 28,
+    paddingTop: 15,
   },
   footer: {
     position: 'absolute',
@@ -38,12 +41,23 @@ const styles = StyleSheet.create({
     height: "600px",
     width: "100%",
   },
-  canvas: {
-    height: "10px",
-    width: "13.5cm"
+  topcrop: {
+    position: "absolute",
+    top: 0,
+    height: 28,
+    width: "100%",
   },
-  text: {
-    marginTop: "10px",
+  middlecrop: {
+    position: "absolute",
+    top: 396,
+    height: 28,
+    width: "100%",
+  },
+  bottomcrop: {
+    position: "absolute",
+    top: 480,
+    height: 28,
+    width: "100%",
   }
 });
 
@@ -90,51 +104,77 @@ const Nomenclature = () => {
 }
 
 const NomenclaturePage = (props) => {
+  let card = props.cards[0];
+  let card2 = props.cards[1];
   return (
-    <Page wrap={false} key={props.pageId} size="A4" orientation="landscape" style={styles.page}>
-      {props.cards.map((card) => (
-        <View key={card.id} style={styles.section}>
-          <Canvas style={styles.canvas}
-              paint={painter =>
-              painter
-                .moveTo(10, 0).lineTo(10, 10).lineTo(0, 10).stroke()
-                .moveTo(372, 0).lineTo(372, 10).lineTo(382, 10).stroke()
-                }
-          />
-          <Image 
-            style={styles.image} 
-            source={{
-              uri: card.location,
-              headers: { Pragma: 'no-cache', 'Cache-Control': 'no-cache' },
-            }}
-          />
-          <Canvas style={styles.canvas}
-              paint={painter =>
-              painter
-                .moveTo(0, 0).lineTo(10, 0).lineTo(10, 10).stroke()
-                .moveTo(372, 10).lineTo(372, 0).lineTo(382, 0).stroke()
-                }
-          />
-          <View style={styles.text}>
-            <Canvas style={styles.canvas}
-                paint={painter =>
-                painter
-                  .moveTo(10, 0).lineTo(10, 10).lineTo(0, 10).stroke()
-                  .moveTo(372, 0).lineTo(372, 10).lineTo(382, 10).stroke()
-                  }
-            />
-            <Text style={styles.label}>{card.originalname}</Text>
-            <Canvas style={styles.canvas}
-                paint={painter =>
-                painter
-                  .moveTo(0, 0).lineTo(10, 0).lineTo(10, 10).stroke()
-                  .moveTo(372, 10).lineTo(372, 0).lineTo(382, 0).stroke()
-                  }
+    <Page wrap={false} key={props.pageId} size="letter" orientation="landscape">
+        
+      <Canvas style={styles.topcrop}
+            paint={painter =>
+              // top crop marks
+            painter.strokeOpacity(0.5).lineWidth(0.25)
+              .moveTo(28, 0).lineTo(28, 28).lineTo(0, 28).stroke()
+              .moveTo(368, 28).lineTo(396, 28).lineTo(396, 0).stroke()
+              .moveTo(396, 28).lineTo(424, 28).stroke()
+              .moveTo(764,0).lineTo(764,28).lineTo(792,28).stroke()
+              }
+      />
+      <Canvas style={styles.middlecrop}
+            paint={painter =>
+              // middle crop marks
+            painter.strokeOpacity(0.5).lineWidth(0.25)
+            // left
+              .moveTo(0, 0).lineTo(28, 0).lineTo(28, 12).stroke()
+              .moveTo(0, 28).lineTo(28, 28).lineTo(28, 16).stroke()
+            // center
+              .moveTo(368, 0).lineTo(396, 0).lineTo(396, 12).stroke()
+              .moveTo(396, 0).lineTo(424, 0).stroke()
+              .moveTo(368, 28).lineTo(396, 28).lineTo(396, 16).stroke()
+              .moveTo(396, 28).lineTo(424, 28).stroke()
+            // right
+              .moveTo(764,12).lineTo(764,0).lineTo(792,0).stroke()
+              .moveTo(764,16).lineTo(764,28).lineTo(792,28).stroke()
+              }
+      />    
+      <Canvas style={styles.bottomcrop}
+            paint={painter =>
+              // bottom crop marks
+            painter.strokeOpacity(0.5).lineWidth(0.25)
+              .moveTo(0, 0).lineTo(28, 0).lineTo(28, 28).stroke()
+              .moveTo(368, 0).lineTo(396, 0).lineTo(396, 28).stroke()
+              .moveTo(396, 0).lineTo(424, 0).stroke()
+              .moveTo(764,28).lineTo(764,0).lineTo(792,0).stroke()
+              }
+      />    
+      <View style={styles.cardContainer}>
+        <View key={card.id} style={styles.card}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={{
+                uri: card.location,
+                headers: { Pragma: 'no-cache', 'Cache-Control': 'no-cache' },
+              }}
             />
           </View>
-          
+          <Text style={styles.label}>{card.originalname}</Text>
         </View>
-      ))}
+
+        {card2 && (
+          <View key={card2.id} style={styles.card}>
+          
+            <View style={styles.imageContainer}>
+              <Image 
+                source={{
+                  uri: card2.location,
+                  headers: { Pragma: 'no-cache', 'Cache-Control': 'no-cache' },
+                }}
+              />
+            </View>
+            <Text style={styles.label}>{card2.originalname}</Text>
+          </View>
+        )}  
+      </View>
+
       <Text style={styles.footer} fixed>
         Carte créé par l'auteur --- CC BY NC SA 4.0
       </Text>
