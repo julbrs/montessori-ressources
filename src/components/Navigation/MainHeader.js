@@ -37,6 +37,9 @@ const MainHeader = props => {
             <Navbar.Item renderAs={Link} to={`/info`}>
               À propos
             </Navbar.Item>
+            <Navbar.Item renderAs={Link} to={`/contact`}>
+              Nous contacter
+            </Navbar.Item>
             {auth.isLoggedIn && (
             <Navbar.Item renderAs={Link} to={`/admin`}>
               Admin

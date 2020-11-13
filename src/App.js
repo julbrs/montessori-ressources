@@ -1,15 +1,16 @@
 import React, { useState, useCallback } from 'react';
+import Admin from './components/Admin/index'
+import { AuthContext } from 'context/auth-context'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProtectedRoute from './components/Navigation/ProtectedRoute'
 import Add from './components/add'
+import Contact from './components/pages/contact'
 import Nomenclature from './components/pdf/nomenclature'
 import NomenclatureView from './components/nomenclature/NomenclatureView'
 import MainHeader from './components/Navigation/MainHeader';
 import MainFooter from './components/Footer/MainFooter'
 import Info from './components/pages/info'
 import Main from './components/pages/main'
-import { AuthContext } from 'context/auth-context'
-import Admin from './components/Admin/index'
 import withTracker from './tools/withTracker'
 
 import './App.scss'
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/nomenclature/:nomenclatureId" component={withTracker(Nomenclature)} />
           <ProtectedRoute path="/add" component={withTracker(Add)} />
           <Route path="/info" component={withTracker(Info)} />
+          <Route path="/contact" component={Contact} />
           <Route path="/admin" component={Admin} />
           <Route path="/" exact component={withTracker(Main)} />
         </Switch>
