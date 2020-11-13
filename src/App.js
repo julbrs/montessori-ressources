@@ -1,18 +1,17 @@
 import React, { useState, useCallback } from 'react';
 import Admin from './components/Admin/index'
 import { AuthContext } from 'context/auth-context'
-import banner from 'images/banner.jpg'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProtectedRoute from './components/Navigation/ProtectedRoute'
 import Add from './components/add'
 import Contact from './components/pages/contact'
-import Image from 'react-bulma-components/lib/components/image'
-import Info from './components/pages/info'
-import MainHeader from './components/Navigation/MainHeader';
-import MainFooter from './components/Footer/MainFooter'
-import Nomenclatures from './components/nomenclatures'
 import Nomenclature from './components/pdf/nomenclature'
 import NomenclatureView from './components/nomenclature/NomenclatureView'
+import MainHeader from './components/Navigation/MainHeader';
+import MainFooter from './components/Footer/MainFooter'
+import Info from './components/pages/info'
+import Main from './components/pages/main'
+import withTracker from './tools/withTracker'
 
 import './App.scss'
 
@@ -40,17 +39,13 @@ const App = () => {
         renders the first one that matches the current URL. */}
         <main>
         <Switch>
-          <Route path="/nomenclature/view/:nomenclatureId" component={NomenclatureView} />
-          <Route path="/nomenclature/:nomenclatureId" component={Nomenclature} />
-          <ProtectedRoute path="/add" component={Add} />
-          <Route path="/info" component={Info} />
+          <Route path="/nomenclature/view/:nomenclatureId" component={withTracker(NomenclatureView)} />
+          <Route path="/nomenclature/:nomenclatureId" component={withTracker(Nomenclature)} />
+          <ProtectedRoute path="/add" component={withTracker(Add)} />
+          <Route path="/info" component={withTracker(Info)} />
           <Route path="/contact" component={Contact} />
           <Route path="/admin" component={Admin} />
-
-          <Route path="/" exact>
-            <Image  src={banner} style={{ width: "100%", marginLeft: "auto",  marginRight: "auto"}}/>
-            <Nomenclatures />
-          </Route>
+          <Route path="/" exact component={withTracker(Main)} />
         </Switch>
         </main>
         <MainFooter />
