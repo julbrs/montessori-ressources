@@ -22,7 +22,7 @@ const Contact = () => {
       <Section>
         <Content size="medium">
           <p>
-            Utiliser le formulaire ci-dessous ou si vous le désirez vous pouvez <a href="mailto:inf%6f@%72essource-mo%6etess%6fri%2en%65t">utiliser ce lien directement</a> pour nous contacter.
+            Utiliser le formulaire ci-dessous ou si vous le désirez vous pouvez <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#110;&#102;&#111;&#64;&#109;&#111;&#110;&#116;&#101;&#115;&#115;&#111;&#114;&#105;&#45;&#114;&#101;&#115;&#115;&#111;&#117;&#114;&#99;&#101;&#115;&#46;&#110;&#101;&#116;">utiliser ce lien directement</a> pour nous contacter.
           </p>
           <ContactForm />
         </Content>
