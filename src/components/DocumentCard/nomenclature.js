@@ -11,7 +11,6 @@ import * as ROUTES from "../../constants/routes";
 
 const NomenclatureCard = (props) => {
   const { document } = props;
-  console.log(document);
   return (
     <Columns.Column size="half" tablet={{ size: 12 }} desktop={{ size: 6 }}>
       <Box>

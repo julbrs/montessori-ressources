@@ -44,10 +44,6 @@ const Documents = (props) => {
           isLoading(false);
         });
     }
-    // client.get("/nomenclatures").then((result) => {
-    //   setDocuments(result.data);
-    //   isLoading(false);
-    // });
   }, [category, db]);
 
   if (loading) {
@@ -56,7 +52,8 @@ const Documents = (props) => {
     return (
       <Columns multiline={true} breakpoint="desktop">
         {documents
-          .filter((n) => n.status !== "DRAFT")
+          // show only validated documents
+          .filter((n) => n.validated)
           .map((document) => (
             <Document key={document.id} document={document} />
           ))}

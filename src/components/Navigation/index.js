@@ -49,9 +49,9 @@ const NavigationAuth = (props) => {
         <Navbar.Item renderAs={Link} to={ROUTES.LANDING}>
           Documents
         </Navbar.Item>
-        {/* <Navbar.Item renderAs={Link} to={ROUTES.ADD}>
+        <Navbar.Item renderAs={Link} to={ROUTES.ADD}>
           Créer
-        </Navbar.Item> */}
+        </Navbar.Item>
         <Navbar.Item renderAs={Link} to={ROUTES.INFO}>
           À propos
         </Navbar.Item>
