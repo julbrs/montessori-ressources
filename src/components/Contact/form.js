@@ -33,7 +33,7 @@ class ContactForm extends Component {
 
   // handle submission of netlify form
   handleSubmit = (e) => {
-    fetch("/", {
+    fetch(process.env.REACT_APP_GETFORM_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...this.state }),
