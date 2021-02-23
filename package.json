@@ -3,34 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.9.9",
-    "@material-ui/icons": "^4.9.1",
     "@react-pdf/renderer": "^1.6.8",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.19.2",
+    "firebase": "^8.2.4",
     "node-sass": "^4.13.1",
-    "react": "^16.12.0",
-    "react-admin": "^3.4.1",
+    "react": "^17.0.1",
     "react-bulma-components": "3.4.0",
-    "react-dom": "^16.12.0",
-    "react-dropzone": "^10.2.1",
-    "react-editext": "^3.15.0",
-    "react-facebook-login": "^4.1.1",
+    "react-dom": "^17.0.1",
+    "react-dropzone": "^11.3.0",
     "react-ga": "^3.1.2",
-    "react-google-login": "^5.1.2",
     "react-icons": "^3.9.0",
     "react-image-file-resizer": "^0.2.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^4.0.2",
+    "recompose": "^0.30.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy": "react-scripts build && firebase deploy",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "react-scripts build && cd build && surge --project . --domain https://montessori-ressources.net"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,5 +38,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.2"
   }
 }
