@@ -82,7 +82,7 @@ const NavigationNonAuth = (props) => {
     <Navbar.Menu>
       <Navbar.Container>
         <Navbar.Item renderAs={Link} to={ROUTES.LANDING}>
-          Nomenclatures
+          Documents
         </Navbar.Item>
         <Navbar.Item renderAs={Link} to={ROUTES.INFO}>
           À propos
