@@ -22,7 +22,7 @@ const Home = () => {
         <Columns>
           <Columns.Column size={3}>
             <Heading size={6}>Catégories</Heading>
-            <Categories />
+            <Categories parent={null} />
           </Columns.Column>
           <Columns.Column>
             <Documents category={category} />

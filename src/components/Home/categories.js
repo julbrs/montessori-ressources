@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import * as ROUTES from "../../constants/routes";
 import List from "react-bulma-components/lib/components/list";
 import { withFirebase } from "components/Firebase";
+import Category from "./category";
 
 const Categories = (props) => {
   const {
+    parent,
     firebase: { db },
   } = props;
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     db.collection("categories")
+      .where("parent_id", "==", parent)
       .orderBy("title")
       .get()
       .then((querySnapshot) => {
@@ -26,28 +27,19 @@ const Categories = (props) => {
       .catch((error) => {
         console.error(error);
       });
-  }, [db]);
+  }, [db, parent]);
 
-  return (
-    <List hoverable>
-      {categories.map((category, idx) => (
-        <Category key={idx} category={category} />
-      ))}
-    </List>
-  );
-};
-
-const Category = (props) => {
-  const { category } = props;
-
-  return (
-    <List.Item
-      renderAs={Link}
-      to={`${ROUTES.CATEGORY}/${category.id}/${category.slug}`}
-    >
-      {category.title}
-    </List.Item>
-  );
+  if (categories && categories.length !== 0) {
+    return (
+      <List hoverable>
+        {categories.map((category, idx) => (
+          <Category key={idx} category={category} />
+        ))}
+      </List>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default withFirebase(Categories);
