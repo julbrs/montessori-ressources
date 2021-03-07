@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { compose } from "recompose";
 
 import FilePrint from "./file";
-import NomenclaturePrint from "./nomenclature";
+import NomenclatureType1Print from "./nomenclature-type1";
+import NomenclatureType2Print from "./nomenclature-type2";
 import { withFirebase } from "components/Firebase";
 import withTracker from "../../tools/withTracker";
 
@@ -32,7 +33,11 @@ const DocumentPrint = (props) => {
   } else if (document.type === "file") {
     return <FilePrint document={document} />;
   } else {
-    return <NomenclaturePrint document={document} />;
+    if (document.nomenclature_type === 1) {
+      return <NomenclatureType1Print document={document} />;
+    } else {
+      return <NomenclatureType2Print document={document} />;
+    }
   }
 };
 
