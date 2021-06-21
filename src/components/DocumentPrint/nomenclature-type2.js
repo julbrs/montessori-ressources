@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     width: 368,
     height: 56, // around 2cm
     bottom: 75,
-    right: -60,
   },
   footer: {
     position: "absolute",
