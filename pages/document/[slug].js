@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { admin } from "../../utils/firebaseAdmin";
 
+import Image from "next/image";
+
 // This gets called on every build
 export async function getStaticProps({ params }) {
   // Fetch data from firebase
@@ -64,7 +66,7 @@ export default function Document({ type, author, cards, title }) {
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-14 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          <img
+          <Image
             alt="ecommerce"
             className="lg:w-1/2 w-full lg:h-auto h-64 object-contain object-center rounded"
             src={mainImage}
@@ -83,8 +85,8 @@ export default function Document({ type, author, cards, title }) {
               <br />
               Le bouton <strong>Télécharger</strong> ci-dessous permet de
               générer une version <strong>PDF</strong> du document au normes
-              Montessori (l'image sera présentée dans la bonne taille avec les
-              bons libellés à imprimer).
+              Montessori (l&apos;image sera présentée dans la bonne taille avec
+              les bons libellés à imprimer).
             </p>
 
             <div className="flex mt-6">
@@ -125,7 +127,7 @@ export default function Document({ type, author, cards, title }) {
             cards.map((card, index) => (
               <div key={index} className="xl:w-1/4 md:w-1/2 p-4">
                 <div className="bg-gray-100 p-6 rounded-lg">
-                  <img
+                  <Image
                     className="h-80 rounded w-full object-contain object-center mb-6"
                     src={card.file.src}
                     alt={card.file.title}

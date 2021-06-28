@@ -2,6 +2,7 @@ import React from "react";
 
 import { admin } from "../utils/firebaseAdmin";
 import Link from "next/link";
+import Image from "next/image";
 
 import banner from "../public/banner.jpg";
 
@@ -46,7 +47,7 @@ export default function Home({ data }) {
             data.map((doc, index) => (
               <div key={index} className="p-4 md:w-1/3">
                 <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     className="lg:h-48 md:h-36 w-full object-cover object-center"
                     src="https://dummyimage.com/720x400"
                     alt="blog"
@@ -62,7 +63,7 @@ export default function Home({ data }) {
                       Par <strong>{doc.author}.</strong>
                     </p>
                     <div className="flex items-center flex-wrap ">
-                      <Link href={`/document/${doc.slug}`}>
+                      <Link href={`/document/${doc.slug}`} passHref>
                         <div className="text-blue-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer">
                           Voir plus
                           <svg

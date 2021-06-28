@@ -29,6 +29,7 @@ export default function Info() {
             <Image
               src={img}
               className="object-cover object-center h-full w-full"
+              alt=""
             />
           </div>
         </div>
