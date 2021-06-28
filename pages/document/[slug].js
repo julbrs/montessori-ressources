@@ -66,11 +66,14 @@ export default function Document({ type, author, cards, title }) {
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-14 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          <Image
-            alt="ecommerce"
-            className="lg:w-1/2 w-full lg:h-auto h-64 object-contain object-center rounded"
-            src={mainImage}
-          />
+          <div className="lg:w-1/2 w-full lg:h-auto h-64 relative">
+            <Image
+              alt="ecommerce"
+              className=" object-contain object-center rounded"
+              src={mainImage}
+              layout="fill"
+            />
+          </div>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h1 className="text-sm title-font text-gray-500 tracking-widest uppercase">
               {type}
@@ -127,11 +130,14 @@ export default function Document({ type, author, cards, title }) {
             cards.map((card, index) => (
               <div key={index} className="xl:w-1/4 md:w-1/2 p-4">
                 <div className="bg-gray-100 p-6 rounded-lg">
-                  <Image
-                    className="h-80 rounded w-full object-contain object-center mb-6"
-                    src={card.file.src}
-                    alt={card.file.title}
-                  />
+                  <div className="h-80 relative">
+                    <Image
+                      className="rounded w-full object-contain object-center mb-6"
+                      src={card.file.src}
+                      alt={card.file.title}
+                      layout="fill"
+                    />
+                  </div>
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
                     {card.name}
                   </h2>
