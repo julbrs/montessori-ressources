@@ -1,8 +1,0 @@
-.disabled {
-    cursor: not-allowed;
-}
-
-.disabled:hover::after {
-    color:rgb(211, 55, 55);
-    content: ' (il manque un bout de code pour envoyer une email)';
-}
