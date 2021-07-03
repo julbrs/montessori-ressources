@@ -1,46 +1,20 @@
 import { useRouter } from "next/router";
-import { admin } from "../../utils/firebaseAdmin";
-
 import Image from "next/image";
 
 // This gets called on every build
 export async function getStaticProps({ params }) {
-  // Fetch data from firebase
-  try {
-    const doc = await admin
-      .firestore()
-      .collection("documents")
-      .where("slug", "==", params.slug)
-      .get();
+  const res = await fetch(`http://localhost:3000/api/document/${params.slug}`);
+  const data = await res.json();
 
-    if (!doc || !doc.docs || !doc.docs.length > 0) {
-      console.log("hello");
-      return {
-        notFound: true,
-      };
-    }
-    const data = doc.docs[0].data();
-
-    if (data.cards && data.cards.length > 0) {
-      return {
-        props: {
-          type: data.type,
-          author: data.author,
-          cards: data.cards,
-          title: data.title,
-        },
-        revalidate: 60 * 60,
-      };
-    } else {
-      return {
-        notFound: true,
-      };
-    }
-  } catch (err) {
+  if (!data) {
     return {
       notFound: true,
     };
   }
+
+  return {
+    props: { data }, // will be passed to the page component as props
+  };
 }
 
 // this function help to pre-generate a list of path
@@ -54,7 +28,8 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Document({ type, author, cards, title }) {
+export default function Document({ data }) {
+  const { title, author, cards, type } = data;
   const router = useRouter();
   const { slug } = router.query;
   let mainImage = "https://dummyimage.com/400x400";
