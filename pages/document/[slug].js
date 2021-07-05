@@ -1,37 +1,62 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Head from "next/head";
+
+import firebase from "../../lib/firebase";
 
 // This gets called on every build
 export async function getStaticProps({ params }) {
-  const res = await fetch(`http://localhost:3000/api/document/${params.slug}`);
-  const data = await res.json();
+  const snapshot = await firebase
+    .collection("documents")
+    .where("slug", "==", params.slug)
+    .where("validated", "==", true)
+    .get();
 
-  if (!data) {
+  console.log("snapshot: " + snapshot);
+
+  if (!snapshot.docs || !snapshot.docs.length > 0) {
     return {
       notFound: true,
     };
+  } else {
+    let { title, type, cards, author, file } = snapshot.docs[0].data();
+    if (cards === undefined) cards = null;
+    if (file === undefined) file = null;
+    return {
+      props: { title, type, cards, author, file }, // will be passed to the page component as props
+      revalidate: 60 * 60,
+    };
   }
-
-  return {
-    props: { data }, // will be passed to the page component as props
-  };
 }
 
-// this function help to pre-generate a list of path
+/**
+ * List of static path to generate at the build
+ * @returns
+ */
 export async function getStaticPaths() {
+  const snapshot = await firebase
+    .collection("documents")
+    .where("validated", "==", true)
+    .get();
+
+  const paths = snapshot.docs.map((doc) => {
+    const docData = doc.data();
+    return {
+      params: {
+        slug: docData.slug,
+      },
+    };
+  });
   return {
-    paths: [
-      { params: { slug: "toto" } }, // See the "paths" section below
-    ],
+    // pre render all validated documents
+    paths,
     // ask the backend if not in generated path
     fallback: true,
   };
 }
 
-export default function Document({ data }) {
-  const { title, author, cards, type } = data;
+export default function Document({ title, type, cards, author, file }) {
   const router = useRouter();
-  const { slug } = router.query;
   let mainImage = "https://dummyimage.com/400x400";
   if (cards && cards.length > 0) {
     mainImage = cards[0].file.src;
@@ -39,6 +64,13 @@ export default function Document({ data }) {
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
+      <Head>
+        <title>{title} - Montessori Ressources</title>
+        <meta
+          name="description"
+          content="Nomenclature Montessori : {title} avec fichier PDF à imprimer."
+        />
+      </Head>
       <div className="container px-5 py-14 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <div className="lg:w-1/2 w-full lg:h-auto h-64 relative">
@@ -91,36 +123,38 @@ export default function Document({ data }) {
         </div>
       </div>
 
-      <div className="container px-5 py-14 mx-auto">
-        <div className="flex flex-wrap w-full mb-5">
-          <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h2 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
-              Toutes les images
-            </h2>
-            <div className="h-1 w-20 bg-blue-500 rounded"></div>
+      {cards && (
+        <div className="container px-5 py-14 mx-auto">
+          <div className="flex flex-wrap w-full mb-5">
+            <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
+              <h2 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+                Toutes les images
+              </h2>
+              <div className="h-1 w-20 bg-blue-500 rounded"></div>
+            </div>
+          </div>
+          <div className="flex flex-wrap -m-4">
+            {cards &&
+              cards.map((card, index) => (
+                <div key={index} className="xl:w-1/4 md:w-1/2 p-4">
+                  <div className="bg-gray-100 p-6 rounded-lg">
+                    <div className="h-80 relative">
+                      <Image
+                        className="rounded w-full object-contain object-center mb-6"
+                        src={card.file.src}
+                        alt={card.file.title}
+                        layout="fill"
+                      />
+                    </div>
+                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+                      {card.name}
+                    </h2>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
-        <div className="flex flex-wrap -m-4">
-          {cards &&
-            cards.map((card, index) => (
-              <div key={index} className="xl:w-1/4 md:w-1/2 p-4">
-                <div className="bg-gray-100 p-6 rounded-lg">
-                  <div className="h-80 relative">
-                    <Image
-                      className="rounded w-full object-contain object-center mb-6"
-                      src={card.file.src}
-                      alt={card.file.title}
-                      layout="fill"
-                    />
-                  </div>
-                  <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                    {card.name}
-                  </h2>
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
+      )}
     </section>
   );
 }

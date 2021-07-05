@@ -1,14 +1,28 @@
 import React from "react";
 
 import Link from "next/link";
+import firebase from "../lib/firebase";
 import Image from "next/image";
+import Head from "next/head";
 
 import banner from "../public/banner.jpg";
 
 // This gets called on every build
 export async function getStaticProps() {
-  const res = await fetch(`http://localhost:3000/api/document`);
-  const data = await res.json();
+  const snapshot = await firebase
+    .collection("documents")
+    .where("validated", "==", true)
+    .get();
+
+  const data = snapshot.docs.map((doc) => {
+    const docData = doc.data();
+    return {
+      type: docData.type,
+      author: docData.author,
+      title: docData.title,
+      slug: docData.slug,
+    };
+  });
 
   if (!data) {
     return {
@@ -18,7 +32,7 @@ export async function getStaticProps() {
 
   return {
     props: { data }, // will be passed to the page component as props
-    revalidate: 60 * 60,
+    revalidate: 60 * 5,
   };
 }
 
@@ -105,10 +119,16 @@ const Item = ({ doc }) => {
 };
 
 export default function Home({ data }) {
-  let category = "b";
   return (
     <section className="text-gray-600 body-font">
-      <div className="h-80 relative">
+      <Head>
+        <title>Montessori Ressources</title>
+        <meta
+          name="description"
+          content="Espace de partage de nomenclatures Montessori gratuite et libre de droits."
+        />
+      </Head>
+      <div className="h-96 relative">
         <Image
           src={banner}
           className="inline"

@@ -1,12 +1,18 @@
 import Head from "next/head";
 
 import img from "../public/about.jpg";
-
 import Image from "next/image";
 
 export default function Info() {
   return (
     <section className="text-gray-600 body-font">
+      <Head>
+        <title>Info - Montessori Ressources</title>
+        <meta
+          name="description"
+          content="Espace de partage de nomenclatures Montessori gratuite et libre de droits."
+        />
+      </Head>
       <div className="container px-5 py-14 mx-auto flex flex-col">
         <div className="lg:w-4/6 mx-auto">
           <div className="pt-4 sm:mt-0 text-center sm:text-left">
