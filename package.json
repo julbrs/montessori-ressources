@@ -1,47 +1,24 @@
 {
-  "name": "montessori-ressources-ui",
+  "name": "next",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@react-pdf/renderer": "^1.6.8",
-    "firebase": "^8.2.4",
-    "node-sass": "^4.13.1",
-    "react": "^17.0.1",
-    "react-bulma-components": "3.4.0",
-    "react-dom": "^17.0.1",
-    "react-dropzone": "^11.3.0",
-    "react-ga": "^3.1.2",
-    "react-icons": "^3.9.0",
-    "react-image-file-resizer": "^0.2.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^4.0.2",
-    "recompose": "^0.30.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "deploy": "react-scripts build && firebase deploy",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "firebase-admin": "^9.10.0",
+    "next": "^11.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.2"
+    "autoprefixer": "^10.2.6",
+    "eslint": "7.29.0",
+    "eslint-config-next": "11.0.1",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
   }
 }
