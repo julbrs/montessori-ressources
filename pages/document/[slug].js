@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 
 import firebase from "../../lib/firebase";
 
@@ -55,8 +56,9 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Document({ title, type, cards, author, file }) {
+export default function Document({ title, type, cards, author }) {
   const router = useRouter();
+  const slug = router.query.slug;
   let mainImage = "https://dummyimage.com/400x400";
   if (cards && cards.length > 0) {
     mainImage = cards[0].file.src;
@@ -66,6 +68,8 @@ export default function Document({ title, type, cards, author, file }) {
     <section className="text-gray-600 body-font overflow-hidden">
       <Head>
         <title>{title} - Montessori Ressources</title>
+        {/* we don't want to to index this page */}
+        <meta name="robots" content="noindex"></meta>
         <meta
           name="description"
           content="Nomenclature Montessori : {title} avec fichier PDF à imprimer."
@@ -103,9 +107,11 @@ export default function Document({ title, type, cards, author, file }) {
               <span className="title-font font-medium text-2xl text-gray-900">
                 License
               </span>
-              <button className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                Télécharger
-              </button>
+              <Link href={`/document/print/${slug}`} passHref>
+                <div className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 cursor-pointer rounded">
+                  Télécharger
+                </div>
+              </Link>
               <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                 <svg
                   fill="currentColor"

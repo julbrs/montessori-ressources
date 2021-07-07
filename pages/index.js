@@ -15,12 +15,14 @@ export async function getStaticProps() {
     .get();
 
   const data = snapshot.docs.map((doc) => {
-    const docData = doc.data();
+    let { type, author, title, slug, cards } = doc.data();
+    if (cards === undefined) cards = null;
     return {
-      type: docData.type,
-      author: docData.author,
-      title: docData.title,
-      slug: docData.slug,
+      type,
+      author,
+      title,
+      slug,
+      cards,
     };
   });
 
@@ -37,7 +39,71 @@ export async function getStaticProps() {
 }
 
 const Item = ({ doc }) => {
-  const cards = doc.cards;
+  if (doc.type == "file") {
+    return <ItemFile file={doc} />;
+  } else {
+    return <ItemNomenclature nomenclature={doc} />;
+  }
+};
+
+const ItemFile = ({ file }) => {
+  return (
+    <div className="p-4 md:w-1/3">
+      <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+        <div className="h-48 w-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-48 w-48 m-auto"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+            />
+          </svg>
+        </div>
+
+        <div className="p-6">
+          <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+            CATEGORY
+          </h2>
+          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
+            {file.title}
+          </h1>
+          <p className="leading-relaxed mb-3">
+            Par <strong>{file.author}.</strong>
+          </p>
+          <div className="flex items-center flex-wrap ">
+            <Link href={`/document/${file.slug}`} passHref>
+              <div className="text-blue-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer">
+                Voir plus
+                <svg
+                  className="w-4 h-4 ml-2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ItemNomenclature = ({ nomenclature }) => {
+  const cards = nomenclature.cards;
   let mainImage = "https://dummyimage.com/400x400";
   if (cards && cards.length > 0) {
     mainImage = cards[0].file.src;
@@ -45,12 +111,13 @@ const Item = ({ doc }) => {
   return (
     <div className="p-4 md:w-1/3">
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-        <div className="lg:h-48 md:h-36 relative">
+        <div className="h-48 w-full relative">
           <Image
-            className="w-full object-cover object-center"
+            className=""
             src={mainImage}
             alt="blog"
             layout="fill"
+            objectFit="contain"
           />
         </div>
 
@@ -59,13 +126,13 @@ const Item = ({ doc }) => {
             CATEGORY
           </h2>
           <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-            {doc.title}
+            {nomenclature.title}
           </h1>
           <p className="leading-relaxed mb-3">
-            Par <strong>{doc.author}.</strong>
+            Par <strong>{nomenclature.author}.</strong>
           </p>
           <div className="flex items-center flex-wrap ">
-            <Link href={`/document/${doc.slug}`} passHref>
+            <Link href={`/document/${nomenclature.slug}`} passHref>
               <div className="text-blue-500 inline-flex items-center md:mb-2 lg:mb-0 cursor-pointer">
                 Voir plus
                 <svg
