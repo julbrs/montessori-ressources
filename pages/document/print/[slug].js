@@ -2,9 +2,13 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
+const Loading = () => {
+  return <p>Chargement...</p>;
+};
+
 const DocumentPdf = dynamic(() => import("../../../components/print"), {
   ssr: false,
-  loading: () => <p>Chargement...</p>,
+  loading: Loading,
 });
 
 import firebase from "../../../lib/firebase";

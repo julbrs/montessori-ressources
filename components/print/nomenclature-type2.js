@@ -173,6 +173,7 @@ const NomenclaturePage = (props) => {
         <View style={styles.card}>
           <View style={styles.imageContainer}>
             <Image
+              alt=""
               source={{
                 uri: card.file.src,
               }}
@@ -183,6 +184,7 @@ const NomenclaturePage = (props) => {
         <View style={styles.card}>
           <View style={styles.imageContainer}>
             <Image
+              alt=""
               source={{
                 uri: card.file.src,
               }}
@@ -194,7 +196,7 @@ const NomenclaturePage = (props) => {
       </View>
 
       <Text style={styles.footer} fixed>
-        Carte créé par l'auteur --- CC BY NC SA 4.0
+        Carte créé par l&apos;auteur --- CC BY NC SA 4.0
       </Text>
     </Page>
   );
