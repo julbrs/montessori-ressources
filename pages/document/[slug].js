@@ -35,10 +35,7 @@ export async function getStaticProps({ params }) {
  * @returns
  */
 export async function getStaticPaths() {
-  const snapshot = await firebase
-    .collection("documents")
-    .where("validated", "==", true)
-    .get();
+  const snapshot = await firebase.collection("documents").where("validated", "==", true).get();
 
   const paths = snapshot.docs.map((doc) => {
     const docData = doc.data();
@@ -68,12 +65,7 @@ export default function Document({ title, type, cards, author }) {
     <section className="text-gray-600 body-font overflow-hidden">
       <Head>
         <title>{title} - Montessori Ressources</title>
-        {/* we don't want to to index this page */}
-        <meta name="robots" content="noindex"></meta>
-        <meta
-          name="description"
-          content="Nomenclature Montessori : {title} avec fichier PDF à imprimer."
-        />
+        <meta name="description" content="Nomenclature Montessori : {title} avec fichier PDF à imprimer." />
       </Head>
       <div className="container px-5 py-14 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -86,27 +78,19 @@ export default function Document({ title, type, cards, author }) {
             />
           </div>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h1 className="text-sm title-font text-gray-500 tracking-widest uppercase">
-              {type}
-            </h1>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-              {title}
-            </h1>
+            <h1 className="text-sm title-font text-gray-500 tracking-widest uppercase">{type}</h1>
+            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{title}</h1>
             <p className="leading-relaxed pb-5 border-b-2 border-gray-100 mb-4">
-              Cette nomenclature, founie par <strong>{author}</strong> est à
-              propos des <strong>{title}</strong>. Elle a été validée par notre
-              équipe éducative, elle est utilisable dans un contexte Montessori.{" "}
-              <br />
-              Le bouton <strong>Télécharger</strong> ci-dessous permet de
-              générer une version <strong>PDF</strong> du document au normes
-              Montessori (l&apos;image sera présentée dans la bonne taille avec
-              les bons libellés à imprimer).
+              Cette nomenclature, founie par <strong>{author}</strong> est à propos des{" "}
+              <strong>{title}</strong>. Elle a été validée par notre équipe éducative, elle est utilisable
+              dans un contexte Montessori. <br />
+              Le bouton <strong>Télécharger</strong> ci-dessous permet de générer une version{" "}
+              <strong>PDF</strong> du document au normes Montessori (l&apos;image sera présentée dans la bonne
+              taille avec les bons libellés à imprimer).
             </p>
 
             <div className="flex mt-6">
-              <span className="title-font font-medium text-2xl text-gray-900">
-                License
-              </span>
+              <span className="title-font font-medium text-2xl text-gray-900">License</span>
               <Link href={`/document/print/${slug}`} passHref>
                 <div className="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 cursor-pointer rounded">
                   Télécharger
@@ -152,9 +136,7 @@ export default function Document({ title, type, cards, author }) {
                         layout="fill"
                       />
                     </div>
-                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                      {card.name}
-                    </h2>
+                    <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{card.name}</h2>
                   </div>
                 </div>
               ))}
