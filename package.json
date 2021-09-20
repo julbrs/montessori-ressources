@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -19,6 +20,7 @@
     "autoprefixer": "^10.2.6",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
+    "next-sitemap": "^1.6.168",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4"
   }
