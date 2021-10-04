@@ -41,10 +41,7 @@ export async function getStaticProps({ params }) {
  * @returns
  */
 export async function getStaticPaths() {
-  const snapshot = await firebase
-    .collection("documents")
-    .where("validated", "==", true)
-    .get();
+  const snapshot = await firebase.collection("documents").where("validated", "==", true).get();
 
   const paths = snapshot.docs.map((doc) => {
     const docData = doc.data();
@@ -69,10 +66,8 @@ export default function DocumentPrint({ title, type, cards, author, file }) {
     <section className="text-gray-600 body-font overflow-hidden">
       <Head>
         <title>{title} - Montessori Ressources</title>
-        <meta
-          name="description"
-          content="Nomenclature Montessori : {title} avec fichier PDF à imprimer."
-        />
+        {/* we don't want to to index this page */}
+        <meta name="robots" content="noindex"></meta>
       </Head>
       <DocumentPdf document={{ title, type, cards, author, file }} />
     </section>
