@@ -35,3 +35,6 @@ yarn-error.log*
 
 old/
 .firebase/
+
+public/robots.txt
+public/sitemap.xml

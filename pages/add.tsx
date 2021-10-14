@@ -18,7 +18,7 @@ export default function Add() {
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Aidez nous !</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Vous pouvez participer à ce projet en fournissant vos propres documents à ce projet! Utilisez
-            simplement l'un des formulaires ci-dessous pour déposer vos <strong>images</strong> pour
+            simplement l&apos;un des formulaires ci-dessous pour déposer vos <strong>images</strong> pour
             nomenclatures, ou fichiers <strong>pdf</strong>. Notre équipe se chargera de valider le contenu
             avant de le proposer sur notre outil. Votre nom sera crédité sur le document.
           </p>

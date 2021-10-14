@@ -91,7 +91,7 @@ var AddFile = (props) => {
     } else {
       return (
         <div>
-          {error != null && <p>Une erreur est survenue lors de l'envoi: {error}</p>}
+          {error != null && <p>Une erreur est survenue lors de l&apos;envoi: {error}</p>}
           <button
             className="border rounded p-2 m-2"
             disabled={file === null || uploading}

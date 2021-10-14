@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
 import Head from "next/head";
-import Link from "next/link";
 
 import firebase from "../../lib/firebase";
 import { Item } from "../../components/document/item";
@@ -88,7 +86,7 @@ export default function Category({ title, data }) {
         <div className="lg:w-4/5 mx-auto">
           <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">Cartes</h2>
           <div className="flex flex-wrap">
-            {data.length > 0 ? (
+            {data?.length > 0 ? (
               data.map((doc, index) => <Item key={index} doc={doc} />)
             ) : (
               <p>Pas encore de cartes ici!</p>

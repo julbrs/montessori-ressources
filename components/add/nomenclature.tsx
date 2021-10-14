@@ -62,10 +62,11 @@ var AddNomenclature = (props) => {
 
   const preview = myFiles.map((file) => (
     <div className="bg-gray-200 p-4 m-2 rounded-lg flex flex-row" key={file.name}>
-      <img
+      <Image
         className="object-cover object-center h-28 w-28 m-2"
         width="128"
         height="128"
+        unoptimized={true}
         alt={file.name}
         src={file.preview}
       />
@@ -142,7 +143,7 @@ var AddNomenclature = (props) => {
     } else {
       return (
         <div>
-          {error != null && <p>Une erreur est survenue lors de l'envoi: {error}</p>}
+          {error != null && <p>Une erreur est survenue lors de l&apos;envoi: {error}</p>}
           <button
             className="border rounded p-2 m-2"
             disabled={myFiles.length <= 0 || uploading}

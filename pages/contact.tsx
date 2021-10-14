@@ -1,8 +1,5 @@
 import Head from "next/head";
 
-import img from "../public/about.jpg";
-import Image from "next/image";
-
 export default function Contact() {
   return (
     <section className="text-gray-600 body-font relative">
@@ -15,9 +12,7 @@ export default function Contact() {
       </Head>
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-            Contactez nous !
-          </h1>
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contactez nous !</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Utiliser le formulaire ci-dessous ou si vous le désirez vous pouvez{" "}
             <a
@@ -33,10 +28,7 @@ export default function Contact() {
           <div className="flex flex-wrap -m-2">
             <div className="p-2 w-1/2">
               <div className="relative">
-                <label
-                  htmlFor="name"
-                  className="leading-7 text-sm text-gray-600"
-                >
+                <label htmlFor="name" className="leading-7 text-sm text-gray-600">
                   Nom
                 </label>
                 <input
@@ -49,10 +41,7 @@ export default function Contact() {
             </div>
             <div className="p-2 w-1/2">
               <div className="relative">
-                <label
-                  htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
-                >
+                <label htmlFor="email" className="leading-7 text-sm text-gray-600">
                   Email
                 </label>
                 <input
@@ -65,10 +54,7 @@ export default function Contact() {
             </div>
             <div className="p-2 w-full">
               <div className="relative">
-                <label
-                  htmlFor="message"
-                  className="leading-7 text-sm text-gray-600"
-                >
+                <label htmlFor="message" className="leading-7 text-sm text-gray-600">
                   Message
                 </label>
                 <textarea
@@ -122,14 +108,7 @@ export default function Contact() {
                     className="w-5 h-5"
                     viewBox="0 0 24 24"
                   >
-                    <rect
-                      width="20"
-                      height="20"
-                      x="2"
-                      y="2"
-                      rx="5"
-                      ry="5"
-                    ></rect>
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
                   </svg>
                 </a>
