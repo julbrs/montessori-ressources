@@ -17,7 +17,7 @@ const uiConfig = {
 function Auth(props) {
   return (
     <div className="container px-5 mx-auto">
-      <p>Merci de vous connecter avant d'accéder à ce contenu:</p>
+      <p>Merci de vous connecter avant d&apos;accéder à ce contenu:</p>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   );
