@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  Canvas,
-  PDFViewer,
-} from "@react-pdf/renderer";
+import { Document, Page, Text, View, Image, StyleSheet, Canvas, PDFViewer } from "@react-pdf/renderer";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -96,7 +87,7 @@ const NomenclaturePage = (props) => {
   let card = props.cards[0];
   let card2 = props.cards[1];
   return (
-    <Page wrap={false} key={props.pageId} size="letter" orientation="landscape">
+    <Page wrap={false} key={props.pageId} size="LETTER" orientation="landscape">
       <Canvas
         style={styles.topcrop}
         paint={(painter) =>

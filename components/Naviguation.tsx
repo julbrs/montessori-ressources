@@ -11,7 +11,7 @@ const Naviguation = (props) => {
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center cursor-pointer">
-        <Link className="" href="/" passHref>
+        <Link href="/" passHref>
           <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -30,19 +30,16 @@ const Naviguation = (props) => {
         </Link>
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
           <Link href="/" passHref>
-            <span className="mr-5 hover:text-gray-900 cursor-pointer">
-              Documents
-            </span>
+            <span className="mr-5 hover:text-gray-900 cursor-pointer">Documents</span>
+          </Link>
+          <Link href="/add" passHref>
+            <span className="mr-5 hover:text-gray-900 cursor-pointer">Ajouter</span>
           </Link>
           <Link href="/info" passHref>
-            <span className="mr-5 hover:text-gray-900 cursor-pointer">
-              A propos
-            </span>
+            <span className="mr-5 hover:text-gray-900 cursor-pointer">A propos</span>
           </Link>
           <Link href="/contact" passHref>
-            <span className="mr-5 hover:text-gray-900 cursor-pointer">
-              Nous contacter
-            </span>
+            <span className="mr-5 hover:text-gray-900 cursor-pointer">Nous contacter</span>
           </Link>
         </nav>
         {/* <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">

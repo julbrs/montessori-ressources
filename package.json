@@ -11,17 +11,24 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^2.0.16",
+    "firebase": "^8.10.0",
     "firebase-admin": "^9.10.0",
     "next": "^11.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-dropzone": "^11.4.2",
+    "react-firebaseui": "^5.0.2",
+    "react-image-file-resizer": "^0.4.7"
   },
   "devDependencies": {
+    "@types/node": "^16.10.4",
+    "@types/react": "^17.0.29",
     "autoprefixer": "^10.2.6",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
     "next-sitemap": "^1.6.168",
     "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4"
+    "tailwindcss": "^2.2.4",
+    "typescript": "^4.4.4"
   }
 }

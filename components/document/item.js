@@ -1,42 +1,5 @@
-import React from "react";
-
 import Link from "next/link";
-import firebase from "../lib/firebase";
 import Image from "next/image";
-import Head from "next/head";
-
-import banner from "../public/banner.jpg";
-
-// This gets called on every build
-export async function getStaticProps() {
-  const snapshot = await firebase
-    .collection("documents")
-    .where("validated", "==", true)
-    .get();
-
-  const data = snapshot.docs.map((doc) => {
-    let { type, author, title, slug, cards } = doc.data();
-    if (cards === undefined) cards = null;
-    return {
-      type,
-      author,
-      title,
-      slug,
-      cards,
-    };
-  });
-
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: { data }, // will be passed to the page component as props
-    revalidate: 60 * 5,
-  };
-}
 
 const Item = ({ doc }) => {
   if (doc.type == "file") {
@@ -68,12 +31,8 @@ const ItemFile = ({ file }) => {
         </div>
 
         <div className="p-6">
-          <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-            CATEGORY
-          </h2>
-          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-            {file.title}
-          </h1>
+          <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{file.title}</h1>
           <p className="leading-relaxed mb-3">
             Par <strong>{file.author}.</strong>
           </p>
@@ -112,22 +71,12 @@ const ItemNomenclature = ({ nomenclature }) => {
     <div className="p-4 md:w-1/3">
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <div className="h-48 w-full relative">
-          <Image
-            className=""
-            src={mainImage}
-            alt="blog"
-            layout="fill"
-            objectFit="contain"
-          />
+          <Image className="" src={mainImage} alt="blog" layout="fill" objectFit="contain" />
         </div>
 
         <div className="p-6">
-          <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-            CATEGORY
-          </h2>
-          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-            {nomenclature.title}
-          </h1>
+          <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
+          <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{nomenclature.title}</h1>
           <p className="leading-relaxed mb-3">
             Par <strong>{nomenclature.author}.</strong>
           </p>
@@ -185,30 +134,4 @@ const ItemNomenclature = ({ nomenclature }) => {
   );
 };
 
-export default function Home({ data }) {
-  return (
-    <section className="text-gray-600 body-font">
-      <Head>
-        <title>Montessori Ressources</title>
-        <meta
-          name="description"
-          content="Espace de partage de nomenclatures Montessori gratuite et libre de droits."
-        />
-      </Head>
-      <div className="h-96 relative">
-        <Image
-          src={banner}
-          className="inline"
-          objectFit="cover"
-          layout="fill"
-          alt=""
-        />
-      </div>
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap -m-4">
-          {data && data.map((doc, index) => <Item key={index} doc={doc} />)}
-        </div>
-      </div>
-    </section>
-  );
-}
+export { Item };

@@ -13,7 +13,7 @@ export async function getStaticProps({ params }) {
     .where("validated", "==", true)
     .get();
 
-  if (!snapshot.docs || !snapshot.docs.length > 0) {
+  if (!snapshot.docs) {
     return {
       notFound: true,
     };
