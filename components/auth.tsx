@@ -4,22 +4,23 @@ import firebase from "../firebase/clientApp";
 
 // Configure FirebaseUI.
 const uiConfig = {
-  // Redirect to / after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: "/",
-
+  callbacks: {
+    // Avoid redirects after sign-in.
+    signInSuccessWithAuthResult: () => false,
+  },
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],
 };
 
-function SignInScreen() {
+function Auth(props) {
   return (
-    <div>
-      <p>Please sign-in:</p>
+    <div className="container px-5 mx-auto">
+      <p>Merci de vous connecter avant d&apos;accéder à ce contenu:</p>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   );
 }
 
-export default SignInScreen;
+export default Auth;

@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import Naviguation from "../components/Naviguation";
+import Naviguation from "../components/nav";
 
 export default function MontessoriRessources({ Component, pageProps }) {
   return (

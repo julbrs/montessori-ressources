@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import firebase from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Naviguation = (props) => {
-  const [open, setOpen] = useState(false);
-
-  const handleClick = () => {
-    setOpen(!open);
+  const signout = () => {
+    firebase.auth().signOut();
   };
 
+  const [user, loading, error] = useAuthState(firebase.auth());
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center cursor-pointer">
@@ -41,6 +42,11 @@ const Naviguation = (props) => {
           <Link href="/contact" passHref>
             <span className="mr-5 hover:text-gray-900 cursor-pointer">Nous contacter</span>
           </Link>
+          {user && (
+            <span className="mr-5 hover:text-gray-900 cursor-pointer font-bold" onClick={signout}>
+              Déconnexion ({user.displayName})
+            </span>
+          )}
         </nav>
         {/* <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
           Se connecter

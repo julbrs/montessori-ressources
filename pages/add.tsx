@@ -2,8 +2,12 @@ import Head from "next/head";
 
 import AddNomenclature from "../components/add/nomenclature";
 import AddFile from "../components/add/file";
+import firebase from "../firebase/clientApp";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Auth from "../components/auth";
 
 export default function Add() {
+  const [user, loading, error] = useAuthState(firebase.auth());
   return (
     <section className="text-gray-600 body-font relative">
       <Head>
@@ -13,6 +17,8 @@ export default function Add() {
           content="Espace de partage de nomenclatures Montessori gratuite et libre de droits."
         />
       </Head>
+      {loading && <h4>Loading...</h4>}
+
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Aidez nous !</h1>
@@ -23,8 +29,13 @@ export default function Add() {
             avant de le proposer sur notre outil. Votre nom sera crédité sur le document.
           </p>
         </div>
-        <AddNomenclature />
-        <AddFile />
+        {!user && <Auth />}
+        {user && (
+          <div>
+            <AddNomenclature />
+            <AddFile />
+          </div>
+        )}
       </div>
     </section>
   );
