@@ -49,6 +49,7 @@ var AddFile = (props) => {
       // initiate the document with no cards
       const doc = {
         type: "file",
+        validated: false,
         title: name,
         author: "Unknown",
         createdby: "auth",
