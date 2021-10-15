@@ -4,10 +4,30 @@ import firebase from "../firebase/clientApp";
 
 // Configure FirebaseUI.
 const uiConfig = {
-  // callbacks: {
-  //   // Avoid redirects after sign-in.
-  //   signInSuccessWithAuthResult: () => false,
-  // },
+  callbacks: {
+    signInSuccessWithAuthResult: (authResult) => {
+      // this is a new user, add them to the firestore users collection!
+      if (authResult.additionalUserInfo.isNewUser) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(authResult.user.uid)
+          .set({
+            admin: false,
+            displayName: authResult.user.displayName,
+            photoURL: authResult.user.photoURL,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          })
+          .then(() => {
+            console.log("User document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing user document: ", error);
+          });
+      }
+      return false;
+    },
+  },
   signInSuccessUrl: "#/",
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
