@@ -98,6 +98,7 @@ var AddNomenclature = (props) => {
       const doc = {
         type: "nomenclature",
         title: name,
+        validated: false,
         author: "Unknown",
         createdby: "auth",
         createdate: "",
