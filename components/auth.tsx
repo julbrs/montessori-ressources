@@ -14,6 +14,7 @@ const uiConfig = {
           .doc(authResult.user.uid)
           .set({
             admin: false,
+            email: authResult.user.email,
             displayName: authResult.user.displayName,
             photoURL: authResult.user.photoURL,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -25,7 +26,7 @@ const uiConfig = {
             console.error("Error writing user document: ", error);
           });
       }
-      return false;
+      return null;
     },
   },
   signInSuccessUrl: "#/",

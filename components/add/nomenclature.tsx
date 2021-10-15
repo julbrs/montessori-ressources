@@ -93,6 +93,7 @@ var AddNomenclature = (props) => {
 
   const createNomenclature = async () => {
     setUploading(true);
+    setError(null);
     try {
       // initiate the document with no cards
       const doc = {
@@ -100,8 +101,8 @@ var AddNomenclature = (props) => {
         title: name,
         validated: false,
         author: "Unknown",
-        createdby: "auth",
-        createdate: "",
+        createdby: firebase.auth().currentUser.uid,
+        createdate: firebase.firestore.Timestamp.fromDate(new Date()),
         cards: [],
       };
       const docRef = await firebase.firestore().collection("documents").add(doc);
@@ -124,7 +125,7 @@ var AddNomenclature = (props) => {
       // if there is an error during the process then print it
       setUploading(false);
       setSuccess(false);
-      setError(error);
+      setError(error.message);
     }
   };
 
