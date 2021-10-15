@@ -26,7 +26,7 @@ const uiConfig = {
             console.error("Error writing user document: ", error);
           });
       }
-      return null;
+      return true;
     },
   },
   signInSuccessUrl: "#/",
