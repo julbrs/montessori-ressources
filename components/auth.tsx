@@ -4,10 +4,11 @@ import firebase from "../firebase/clientApp";
 
 // Configure FirebaseUI.
 const uiConfig = {
-  callbacks: {
-    // Avoid redirects after sign-in.
-    signInSuccessWithAuthResult: () => false,
-  },
+  // callbacks: {
+  //   // Avoid redirects after sign-in.
+  //   signInSuccessWithAuthResult: () => false,
+  // },
+  signInSuccessUrl: "#/",
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
