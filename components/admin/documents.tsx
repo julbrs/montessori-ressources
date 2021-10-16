@@ -48,15 +48,16 @@ const nomenclatures = [
 ];
 
 export const DocumentList = (props) => (
-  <List {...props}>
+  <List {...props} sort={{ field: "createdate", order: "DESC" }}>
     <Datagrid>
       <TextField source="id" />
+      <DateField source="createdate" label="Created" />
       <TextField source="title" />
       <BooleanField source="validated" />
       <SelectField source="type" choices={choices} />
       <SelectField source="nomenclature_type" choices={nomenclatures} />
       <ReferenceField label="Category" source="category_id" reference="categories">
-        <ChipField source="title" />
+        <ChipField source="slug" />
       </ReferenceField>
       <ShowButton label="" />
       <EditButton label="" />
@@ -92,7 +93,7 @@ export const DocumentShow = (props) => (
       <TextField source="id" />
       <SelectField source="type" choices={choices} />
       <ReferenceField label="Category" source="category_id" reference="categories">
-        <TextField source="title" />
+        <TextField source="slug" />
       </ReferenceField>
       <TextField source="title" />
       <RichTextField source="description" />
@@ -148,7 +149,7 @@ const EditCreate = () => (
       validate={[required()]}
     />
     <ReferenceInput fullWidth label="Category" source="category_id" reference="categories">
-      <SelectInput optionText="title" helperText="Select here the category for this document" />
+      <SelectInput optionText="slug" helperText="Select here the category for this document" />
     </ReferenceInput>
 
     <FormDataConsumer>

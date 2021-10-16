@@ -18,11 +18,22 @@ export async function getStaticProps({ params }) {
       notFound: true,
     };
   } else {
-    let { title, type, cards, author, file } = snapshot.docs[0].data();
+    let { category_id, title, type, cards, author, file } = snapshot.docs[0].data();
+
+    const snapshotCategory = await firebase.collection("categories").doc(category_id).get();
+
     if (cards === undefined) cards = null;
     if (file === undefined) file = null;
     return {
-      props: { title, type, cards, author, file }, // will be passed to the page component as props
+      props: {
+        title,
+        type,
+        cards,
+        author,
+        file,
+        category: snapshotCategory.data().title,
+        category_slug: snapshotCategory.data().slug,
+      }, // will be passed to the page component as props
       revalidate: 60 * 60,
     };
   }
@@ -51,7 +62,7 @@ export async function getStaticPaths() {
   };
 }
 
-export default function Document({ title, type, cards, author }) {
+export default function Document({ title, type, cards, author, category, category_slug }) {
   const router = useRouter();
   const slug = router.query.slug;
   let mainImage = "https://dummyimage.com/400x400";
@@ -76,7 +87,9 @@ export default function Document({ title, type, cards, author }) {
             />
           </div>
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <span className="text-sm title-font text-gray-500 tracking-widest uppercase">{type}</span>
+            <Link href={`/category/${category_slug}`}>
+              <a className="text-sm title-font text-gray-500 tracking-widest uppercase">{category}</a>
+            </Link>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{title}</h1>
             <p className="leading-relaxed pb-5 border-b-2 border-gray-100 mb-4">
               Cette nomenclature, fournie par <strong>{author}</strong> est à propos des{" "}

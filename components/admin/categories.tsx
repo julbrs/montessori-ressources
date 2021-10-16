@@ -25,15 +25,11 @@ import {
 import RichTextInput from "ra-input-rich-text";
 
 export const CategoryList = (props) => (
-  <List {...props}>
+  <List {...props} sort={{ field: "slug", order: "ASC" }}>
     <Datagrid>
       <TextField source="title" />
       <TextField source="slug" />
-      <ReferenceField
-        label="Parent Category"
-        source="parent_id"
-        reference="categories"
-      >
+      <ReferenceField label="Parent Category" source="parent_id" reference="categories">
         <TextField source="title" />
       </ReferenceField>
       <ShowButton label="" />
@@ -47,11 +43,7 @@ export const CategoryShow = (props) => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
-      <ReferenceField
-        label="Parent Category"
-        source="parent_id"
-        reference="categories"
-      >
+      <ReferenceField label="Parent Category" source="parent_id" reference="categories">
         <TextField source="title" />
       </ReferenceField>
       <TextField source="title" />
@@ -68,16 +60,8 @@ export const CategoryCreate = (props) => (
     <SimpleForm>
       <TextInput source="title" validate={[required()]} />
       <TextInput source="slug" validate={[required()]} />
-      <ReferenceInput
-        label="Parent Category"
-        source="parent_id"
-        reference="categories"
-        allowEmpty
-      >
-        <SelectInput
-          optionText="title"
-          helperText="Select here the parent category if applicable."
-        />
+      <ReferenceInput label="Parent Category" source="parent_id" reference="categories" allowEmpty>
+        <SelectInput optionText="title" helperText="Select here the parent category if applicable." />
       </ReferenceInput>
       <RichTextInput source="description" />
     </SimpleForm>
@@ -92,16 +76,8 @@ export const CategoryEdit = (props) => (
       <DateInput source="lastupdate" options={{ disabled: true }} />
       <TextInput source="title" validate={[required()]} />
       <TextInput source="slug" validate={[required()]} />
-      <ReferenceInput
-        label="Parent Category"
-        source="parent_id"
-        reference="categories"
-        allowEmpty
-      >
-        <SelectInput
-          optionText="title"
-          helperText="Select here the parent category if applicable."
-        />
+      <ReferenceInput label="Parent Category" source="parent_id" reference="categories" allowEmpty>
+        <SelectInput optionText="title" helperText="Select here the parent category if applicable." />
       </ReferenceInput>
       <RichTextInput source="description" />
       <SelectInput

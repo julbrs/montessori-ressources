@@ -94,11 +94,20 @@ var AddFile = (props) => {
         <div>
           {error != null && <p>Une erreur est survenue lors de l&apos;envoi: {error}</p>}
           <button
-            className="border rounded p-2 m-2"
+            className="border rounded p-2 m-2 flex"
             disabled={file === null || uploading}
             onClick={createFile}
           >
-            Envoyer !
+            {uploading ? (
+              <>
+                <div className="w-4 h-4 border-b-2 m-1  border-gray-900 rounded-full animate-spin"></div>
+                <span>Attendez...</span>
+              </>
+            ) : (
+              <>
+                <span>Envoyer !</span>
+              </>
+            )}
           </button>
         </div>
       );
