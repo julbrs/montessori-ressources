@@ -69,7 +69,6 @@ export default function Home({ docs, categories }) {
   const [selectedFirstCategory, setSelectedFirstCategory] = useState(null);
   const [selectedSecondCategory, setSelectedSecondCategory] = useState(null);
 
-  console.log(categories);
   return (
     <section className="text-gray-600 body-font">
       <Head>
