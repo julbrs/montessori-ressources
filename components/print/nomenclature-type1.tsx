@@ -25,13 +25,6 @@ const styles = StyleSheet.create({
     marginTop: 28,
     paddingTop: 15,
   },
-  labelInside: {
-    position: "absolute",
-    width: 368,
-    height: 56, // around 2cm
-    bottom: 75,
-    right: -60,
-  },
   footer: {
     position: "absolute",
     fontSize: 12,
@@ -69,11 +62,21 @@ const styles = StyleSheet.create({
 const NomenclaturePrint = (props) => {
   const { document } = props;
 
+  // group the card 2 by 2
+  let cardGrouped = [];
+  document.cards.forEach((card, index) => {
+    let groupedIndex = Math.trunc(index / 2);
+    if (index % 2 === 0) {
+      cardGrouped[groupedIndex] = [];
+    }
+    cardGrouped[groupedIndex].push(card);
+  });
+
   return (
     <PDFViewer style={styles.viewer}>
       <Document>
-        {document.cards.map((card, index) => (
-          <NomenclaturePage key={index} pageId={index} card={card} />
+        {cardGrouped.map((cards, index) => (
+          <NomenclaturePage key={index} pageId={index} cards={cards} />
         ))}
       </Document>
     </PDFViewer>
@@ -81,7 +84,8 @@ const NomenclaturePrint = (props) => {
 };
 
 const NomenclaturePage = (props) => {
-  let card = props.card;
+  let card = props.cards[0];
+  let card2 = props.cards[1];
   return (
     <Page wrap={false} key={props.pageId} size="LETTER" orientation="landscape">
       <Canvas
@@ -123,37 +127,12 @@ const NomenclaturePage = (props) => {
             // center
             .moveTo(368, 0)
             .lineTo(396, 0)
-            .lineTo(396, 12)
+            .lineTo(396, 28)
             .stroke()
             .moveTo(396, 0)
             .lineTo(424, 0)
             .stroke()
-            .moveTo(368, 28)
-            .lineTo(396, 28)
-            .lineTo(396, 16)
-            .stroke()
             // right
-            .moveTo(764, 12)
-            .lineTo(764, 0)
-            .lineTo(792, 0)
-            .stroke()
-            .moveTo(764, 16)
-            .lineTo(764, 28)
-            .lineTo(792, 28)
-            .stroke()
-        }
-      />
-      <Canvas
-        style={styles.bottomcrop}
-        paint={(painter) =>
-          // bottom crop marks
-          painter
-            .strokeOpacity(0.5)
-            .lineWidth(0.25)
-            .moveTo(368, 0)
-            .lineTo(396, 0)
-            .lineTo(396, 28)
-            .stroke()
             .moveTo(764, 28)
             .lineTo(764, 0)
             .lineTo(792, 0)
@@ -163,27 +142,17 @@ const NomenclaturePage = (props) => {
       <View style={styles.cardContainer}>
         <View style={styles.card}>
           <View style={styles.imageContainer}>
-            <Image
-              alt=""
-              source={{
-                uri: card.file.src,
-              }}
-            />
+            <Image source={card.file.src} />
           </View>
         </View>
 
-        <View style={styles.card}>
-          <View style={styles.imageContainer}>
-            <Image
-              alt=""
-              src={{
-                uri: card.file.src,
-              }}
-            />
+        {card2 && (
+          <View style={styles.card}>
+            <View style={styles.imageContainer}>
+              <Image source={card.file.src} />
+            </View>
           </View>
-          <Text style={styles.label}>{card.name}</Text>
-          <Text style={styles.labelInside}>{card.name}</Text>
-        </View>
+        )}
       </View>
 
       <Text style={styles.footer} fixed>
