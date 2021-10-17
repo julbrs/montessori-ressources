@@ -69,6 +69,21 @@ export default function Home({ docs, categories }) {
   const [selectedFirstCategory, setSelectedFirstCategory] = useState(null);
   const [selectedSecondCategory, setSelectedSecondCategory] = useState(null);
 
+  const isDocFirstCategoryOrChildCategory = (doc) => {
+    const category_id = doc.category_id;
+    if (!selectedFirstCategory) {
+      return false;
+    }
+    if (category_id === selectedFirstCategory.id) {
+      return true;
+    }
+    const childCategories = categories.filter((cat) => cat.parent_id === selectedFirstCategory.id);
+    if (childCategories.some((cat) => cat.id === category_id)) {
+      return true;
+    }
+    return false;
+  };
+
   return (
     <section className="text-gray-600 body-font">
       <Head>
@@ -91,7 +106,10 @@ export default function Home({ docs, categories }) {
               .map((category, index) => (
                 <Category
                   category={category}
-                  setSelectedCategory={setSelectedFirstCategory}
+                  setSelectedCategory={(cat) => {
+                    setSelectedFirstCategory(cat);
+                    setSelectedSecondCategory(null);
+                  }}
                   key={index}
                   isSelected={selectedFirstCategory === category}
                 />
@@ -124,7 +142,7 @@ export default function Home({ docs, categories }) {
                   // no filter if no selected first category
                   !selectedFirstCategory ||
                   // or filter on first selected cat
-                  (!selectedSecondCategory && doc.category_id === selectedFirstCategory?.id) ||
+                  (!selectedSecondCategory && isDocFirstCategoryOrChildCategory(doc)) ||
                   // or filter on second selected cat
                   doc.category_id === selectedSecondCategory?.id
               )
