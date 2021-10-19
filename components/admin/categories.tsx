@@ -80,14 +80,6 @@ export const CategoryEdit = (props) => (
         <SelectInput optionText="title" helperText="Select here the parent category if applicable." />
       </ReferenceInput>
       <RichTextInput source="description" />
-      <SelectInput
-        source="rating"
-        choices={[
-          { id: 1, name: "Good" },
-          { id: 2, name: "Okay" },
-          { id: 3, name: "Bad" },
-        ]}
-      />
     </SimpleForm>
   </Edit>
 );

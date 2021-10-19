@@ -102,7 +102,7 @@ var AddNomenclature = (props) => {
         validated: false,
         author: "Unknown",
         createdby: firebase.auth().currentUser.uid,
-        createdate: firebase.firestore.Timestamp.fromDate(new Date()),
+        createdate: firebase.firestore.FieldValue.serverTimestamp(),
         cards: [],
       };
       const docRef = await firebase.firestore().collection("documents").add(doc);

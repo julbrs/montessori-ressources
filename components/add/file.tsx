@@ -53,7 +53,7 @@ var AddFile = (props) => {
         title: name,
         author: "Unknown",
         createdby: firebase.auth().currentUser.uid,
-        createdate: firebase.firestore.Timestamp.fromDate(new Date()),
+        createdate: firebase.firestore.FieldValue.serverTimestamp(),
         file: {},
       };
       const docRef = await firebase.firestore().collection("documents").add(doc);
