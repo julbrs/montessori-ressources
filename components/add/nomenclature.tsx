@@ -100,7 +100,7 @@ var AddNomenclature = (props) => {
         type: "nomenclature",
         title: name,
         validated: false,
-        author: "Unknown",
+        author: firebase.auth().currentUser.displayName,
         createdby: firebase.auth().currentUser.uid,
         createdate: firebase.firestore.FieldValue.serverTimestamp(),
         cards: [],

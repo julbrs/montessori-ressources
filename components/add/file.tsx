@@ -51,7 +51,7 @@ var AddFile = (props) => {
         type: "file",
         validated: false,
         title: name,
-        author: "Unknown",
+        author: firebase.auth().currentUser.displayName,
         createdby: firebase.auth().currentUser.uid,
         createdate: firebase.firestore.FieldValue.serverTimestamp(),
         file: {},
