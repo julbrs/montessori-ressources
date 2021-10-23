@@ -163,7 +163,7 @@ export default function Document({ title, cards, author, category, category_slug
             shortname="montessori-ressources"
             config={{
               url: process.env.NEXT_PUBLIC_URL + router.pathname,
-              identifier: slug[0],
+              identifier: `${slug}`,
               title: title,
             }}
           />
