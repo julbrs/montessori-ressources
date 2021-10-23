@@ -71,10 +71,6 @@ export default function Document({ title, cards, author, category, category_slug
   if (cards && cards.length > 0) {
     mainImage = cards[0].file.src;
   }
-  let url = null;
-  if (typeof window !== "undefined") {
-    url = window.location.href;
-  }
   return (
     <>
       <section className="text-gray-600 body-font overflow-hidden">
@@ -163,16 +159,14 @@ export default function Document({ title, cards, author, category, category_slug
       </section>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-14 mx-auto">
-          {url && (
-            <DiscussionEmbed
-              shortname="montessori-ressources"
-              config={{
-                url,
-                identifier: slug[0],
-                title: title,
-              }}
-            />
-          )}
+          <DiscussionEmbed
+            shortname="montessori-ressources"
+            config={{
+              url: process.env.NEXT_PUBLIC_URL + router.pathname,
+              identifier: slug[0],
+              title: title,
+            }}
+          />
         </div>
       </section>
     </>
