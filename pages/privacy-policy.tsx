@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
         </div>
         <div>
           Devant le développement des nouveaux outils de communication, il est nécessaire de porter une
-          attention particulière à la protection de la vie privée. C’est pourquoi, nous nous engageons à
+          attention particulière à la protection de la vie privée. C&apos;est pourquoi, nous nous engageons à
           respecter la confidentialité des renseignements personnels que nous collectons.
         </div>
         <div>
@@ -28,8 +28,8 @@ export default function PrivacyPolicy() {
         </div>
         <div>
           Les renseignements personnels que nous collectons sont recueillis au travers de formulaires et grâce
-          à l’interactivité établie entre vous et notre site Web. Nous utilisons également, comme indiqué dans
-          la section suivante, des fichiers témoins et/ou journaux pour réunir des informations vous
+          à l&apos;interactivité établie entre vous et notre site Web. Nous utilisons également, comme indiqué
+          dans la section suivante, des fichiers témoins et/ou journaux pour réunir des informations vous
           concernant.
         </div>
         <div>
@@ -42,7 +42,7 @@ export default function PrivacyPolicy() {
         </div>
         <div>
           <ul>
-            <li>Formulaire d'inscription au site Web</li>
+            <li>Formulaire d&apos;inscription au site Web</li>
           </ul>
         </div>
         <div>Nous utilisons les renseignements ainsi collectés pour les finalités suivantes :</div>
@@ -55,8 +55,8 @@ export default function PrivacyPolicy() {
           </ul>
         </div>
         <div>
-          Vos renseignements sont également collectés par le biais de l’interactivité pouvant s’établir entre
-          vous et notre site Web et ce, de la façon suivante:
+          Vos renseignements sont également collectés par le biais de l&apos;interactivité pouvant
+          s&apos;établir entre vous et notre site Web et ce, de la façon suivante:
         </div>
         <div>
           <br />
@@ -78,21 +78,22 @@ export default function PrivacyPolicy() {
         <div>
           <br />
         </div>
-        <h2 className="text-l font-bold mb-4">Droit d’opposition et de retrait</h2>
+        <h2 className="text-l font-bold mb-4">Droit d&apos;opposition et de retrait</h2>
         <div>
-          Nous nous engageons à vous offrir un droit d’opposition et de retrait quant à vos renseignements
-          personnels.
+          Nous nous engageons à vous offrir un droit d&apos;opposition et de retrait quant à vos
+          renseignements personnels.
         </div>
         <div>
-          Le droit d’opposition s’entend comme étant la possiblité offerte aux internautes de refuser que
-          leurs renseignements personnels soient utilisées à certaines fins mentionnées lors de la collecte.
+          Le droit d&apos;opposition s&apos;entend comme étant la possiblité offerte aux internautes de
+          refuser que leurs renseignements personnels soient utilisées à certaines fins mentionnées lors de la
+          collecte.
         </div>
         <div>
           <br />
         </div>
         <div>
-          Le droit de retrait s’entend comme étant la possiblité offerte aux internautes de demander à ce que
-          leurs renseignements personnels ne figurent plus, par exemple, dans une liste de diffusion.
+          Le droit de retrait s&apos;entend comme étant la possiblité offerte aux internautes de demander à ce
+          que leurs renseignements personnels ne figurent plus, par exemple, dans une liste de diffusion.
         </div>
         <div>
           <br />
@@ -110,16 +111,16 @@ export default function PrivacyPolicy() {
         <div>
           <br />
         </div>
-        <h2>Droit d’accès</h2>
+        <h2>Droit d&apos;accès</h2>
         <div>
-          Nous nous engageons à reconnaître un droit d’accès et de rectification aux personnes concernées
+          Nous nous engageons à reconnaître un droit d&apos;accès et de rectification aux personnes concernées
           désireuses de consulter, modifier, voire radier les informations les concernant.
         </div>
         <div>
           <br />
         </div>
         <div>
-          <strong>L’exercice de ce droit se fera :</strong>
+          <strong>L&apos;exercice de ce droit se fera :</strong>
         </div>
         <div>
           <br />
@@ -154,9 +155,9 @@ export default function PrivacyPolicy() {
         </div>
         <div>
           Nous nous engageons à maintenir un haut degré de confidentialité en intégrant les dernières
-          innovations technologiques permettant d’assurer la confidentialité de vos transactions. Toutefois,
-          comme aucun mécanisme n’offre une sécurité maximale, une part de risque est toujours présente
-          lorsque l’on utilise Internet pour transmettre des renseignements personnels.
+          innovations technologiques permettant d&apos;assurer la confidentialité de vos transactions.
+          Toutefois, comme aucun mécanisme n&apos;offre une sécurité maximale, une part de risque est toujours
+          présente lorsque l&apos;on utilise Internet pour transmettre des renseignements personnels.
         </div>
         <div>
           <br />
@@ -169,12 +170,6 @@ export default function PrivacyPolicy() {
         <div>Législation: Québec</div>
         <div>
           <br />
-        </div>
-        <div>
-          <strong>Générateur de politique de confidentialité / </strong>
-          <a href="//www.politiquedeconfidentialite.ca" target="_blank">
-            <strong>Politique de confidentialité</strong>
-          </a>
         </div>
       </div>
     </section>
