@@ -12,7 +12,11 @@ import { useState } from "react";
 
 // This gets called on every build
 export async function getStaticProps() {
-  const docSnapshot = await firebase.collection("documents").where("validated", "==", true).get();
+  const docSnapshot = await firebase
+    .collection("documents")
+    .where("validated", "==", true)
+    .where("slug", "!=", null)
+    .get();
 
   const docs = docSnapshot.docs.map((doc) => {
     let { category_id, type, author, title, slug, cards } = doc.data();
@@ -60,7 +64,11 @@ const Category = ({ category, setSelectedCategory, isSelected }) => {
       onClick={onClick}
       className="cursor-pointer w-36 text-gray-600 text-xl text-center border-2 border-gray-200 border-opacity-60 rounded-lg m-2"
     >
-      <span className={`transition ${isSelected ? "font-bold" : "border-gray-300"}`}>{category.title}</span>
+      <span
+        className={`transition ${isSelected ? "font-bold" : "border-gray-300"}`}
+      >
+        {category.title}
+      </span>
     </div>
   );
 };
@@ -77,7 +85,9 @@ export default function Home({ docs, categories }) {
     if (category_id === selectedFirstCategory.id) {
       return true;
     }
-    const childCategories = categories.filter((cat) => cat.parent_id === selectedFirstCategory.id);
+    const childCategories = categories.filter(
+      (cat) => cat.parent_id === selectedFirstCategory.id
+    );
     if (childCategories.some((cat) => cat.id === category_id)) {
       return true;
     }
@@ -94,10 +104,18 @@ export default function Home({ docs, categories }) {
         />
       </Head>
       <div className="h-96 relative">
-        <Image src={banner} className="inline" objectFit="cover" layout="fill" alt="" />
+        <Image
+          src={banner}
+          className="inline"
+          objectFit="cover"
+          layout="fill"
+          alt=""
+        />
       </div>
       <div className="container px-5 pt-24 mx-auto">
-        <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">Catégories</h2>
+        <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">
+          Catégories
+        </h2>
         {/* first level */}
         <div className="flex flex-wrap mt-4">
           {categories &&
@@ -133,7 +151,9 @@ export default function Home({ docs, categories }) {
         )}
       </div>
       <div className="container px-5 pt-24 mx-auto">
-        <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">Cartes</h2>
+        <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">
+          Cartes
+        </h2>
         <div className="flex flex-wrap">
           {docs &&
             docs
@@ -142,7 +162,8 @@ export default function Home({ docs, categories }) {
                   // no filter if no selected first category
                   !selectedFirstCategory ||
                   // or filter on first selected cat
-                  (!selectedSecondCategory && isDocFirstCategoryOrChildCategory(doc)) ||
+                  (!selectedSecondCategory &&
+                    isDocFirstCategoryOrChildCategory(doc)) ||
                   // or filter on second selected cat
                   doc.category_id === selectedSecondCategory?.id
               )

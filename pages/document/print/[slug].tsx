@@ -41,7 +41,11 @@ export async function getStaticProps({ params }) {
  * @returns
  */
 export async function getStaticPaths() {
-  const snapshot = await firebase.collection("documents").where("validated", "==", true).get();
+  const snapshot = await firebase
+    .collection("documents")
+    .where("validated", "==", true)
+    .where("slug", "!=", null)
+    .get();
 
   const paths = snapshot.docs.map((doc) => {
     const docData = doc.data();

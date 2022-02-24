@@ -51,12 +51,17 @@ export const DocumentList = (props) => (
   <List {...props} sort={{ field: "createdate", order: "DESC" }}>
     <Datagrid>
       <TextField source="id" />
+      <TextField source="slug" />
       <DateField source="createdate" label="Created" />
       <TextField source="title" />
       <BooleanField source="validated" />
       <SelectField source="type" choices={choices} />
       <SelectField source="nomenclature_type" choices={nomenclatures} />
-      <ReferenceField label="Category" source="category_id" reference="categories">
+      <ReferenceField
+        label="Category"
+        source="category_id"
+        reference="categories"
+      >
         <ChipField source="slug" />
       </ReferenceField>
       <ShowButton label="" />
@@ -91,8 +96,13 @@ export const DocumentShow = (props) => (
   <Show {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
+      <TextField source="slug" />
       <SelectField source="type" choices={choices} />
-      <ReferenceField label="Category" source="category_id" reference="categories">
+      <ReferenceField
+        label="Category"
+        source="category_id"
+        reference="categories"
+      >
         <TextField source="slug" />
       </ReferenceField>
       <TextField source="title" />
@@ -139,7 +149,18 @@ const EditCreate = () => (
       fullWidth
       validate={[required()]}
     />
-    <TextInput source="title" helperText="Name of the document" fullWidth validate={[required()]} />
+    <TextInput
+      source="slug"
+      helperText="Slug of the document"
+      fullWidth
+      validate={[required()]}
+    />
+    <TextInput
+      source="title"
+      helperText="Name of the document"
+      fullWidth
+      validate={[required()]}
+    />
 
     <BooleanInput source="validated" helperText="Visible ?" fullWidth />
     <TextInput
@@ -148,8 +169,16 @@ const EditCreate = () => (
       fullWidth
       validate={[required()]}
     />
-    <ReferenceInput fullWidth label="Category" source="category_id" reference="categories">
-      <SelectInput optionText="slug" helperText="Select here the category for this document" />
+    <ReferenceInput
+      fullWidth
+      label="Category"
+      source="category_id"
+      reference="categories"
+    >
+      <SelectInput
+        optionText="slug"
+        helperText="Select here the category for this document"
+      />
     </ReferenceInput>
 
     <FormDataConsumer>
@@ -197,6 +226,9 @@ const EditCreate = () => (
       }
     </FormDataConsumer>
 
-    <RichTextInput source="description" helperText="This description field is not used yet." />
+    <RichTextInput
+      source="description"
+      helperText="This description field is not used yet."
+    />
   </>
 );

@@ -6,7 +6,10 @@ import { Item } from "../../components/document/item";
 
 // This gets called on every build
 export async function getStaticProps({ params }) {
-  const snapshot = await firebase.collection("categories").where("slug", "==", params.slug).get();
+  const snapshot = await firebase
+    .collection("categories")
+    .where("slug", "==", params.slug)
+    .get();
 
   if (!snapshot.docs) {
     return {
@@ -19,6 +22,7 @@ export async function getStaticProps({ params }) {
     const docSnapshot = await firebase
       .collection("documents")
       .where("validated", "==", true)
+      .where("slug", "!=", null)
       .where("category_id", "==", id)
       .get();
 
@@ -71,11 +75,16 @@ export default function Category({ title, data }) {
     <section className="text-gray-600 body-font overflow-hidden">
       <Head>
         <title>{title} - Montessori Ressources</title>
-        <meta name="description" content="Nomenclature Montessori : {title} avec fichier PDF à imprimer." />
+        <meta
+          name="description"
+          content="Nomenclature Montessori : {title} avec fichier PDF à imprimer."
+        />
       </Head>
       <div className="container px-5 pt-14 mx-auto">
         <div className="lg:w-4/5 mx-auto">
-          <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{title}</h1>
+          <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+            {title}
+          </h1>
           <p className="leading-relaxed pb-5 border-b-2 border-gray-100 mb-4">
             Voici la catégorie <strong>{title}</strong>.
           </p>
@@ -84,7 +93,9 @@ export default function Category({ title, data }) {
 
       <div className="container px-5 pt-24 mx-auto">
         <div className="lg:w-4/5 mx-auto">
-          <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">Cartes</h2>
+          <h2 className="text-gray-900 text-3xl title-font font-medium mb-1">
+            Cartes
+          </h2>
           <div className="flex flex-wrap">
             {data?.length > 0 ? (
               data.map((doc, index) => <Item key={index} doc={doc} />)
